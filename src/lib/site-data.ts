@@ -55,6 +55,9 @@ import buyer13 from "@/assets/buyer/13.webp";
 import buyer14 from "@/assets/buyer/14.webp";
 import buyer15 from "@/assets/buyer/15.webp";
 import buyer16 from "@/assets/buyer/16.webp";
+import BCA from "@/assets/membership/BCA.webp";
+import ICA from "@/assets/membership/ICA.webp";
+import BIAA from "@/assets/membership/BIAA.webp";
 
 export type Buyer = { name: string; logo: string };
 
@@ -82,16 +85,19 @@ export const MEMBERSHIPS = [
     abbr: "ICA",
     name: "International Cotton Association",
     desc: "As an active ICA member, we trade under globally recognized contracts ensuring fair dealing and dispute resolution.",
+    logo: ICA,
   },
   {
     abbr: "BCA",
     name: "Bangladesh Cotton Association",
     desc: "Our BCA membership aligns us with Bangladesh's apex cotton trade standards and local manufacturing networks.",
+    logo: BCA,
   },
   {
     abbr: "BIAA",
     name: "Bangladesh Indenting Agents' Association",
     desc: "Our BIAA membership certifies us as a fully compliant and transparent indenting agent in Bangladesh.",
+    logo: BIAA,
   },
 ];
 

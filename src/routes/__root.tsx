@@ -135,7 +135,7 @@ function SiteHeader() {
     // </header>
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6">
-        <div className="glass flex items-center justify-between rounded-full px-0 py-1 sm:px-6">
+        <div className="glass flex items-center justify-between rounded-full pr-4 pl-2 py-1 sm:px-6">
           <BrandMark />
 
           <nav className="hidden items-center gap-1 lg:flex">
@@ -147,10 +147,10 @@ function SiteHeader() {
                   key={link.to}
                   href={link.to}
                   className={cn(
-                    "rounded-full px-4 py-2 text-sm font-semibold transition-colors",
+                    "rounded-full px-4 py-2 text-md font-bold transition-colors",
                     active
                       ? "bg-primary/15 text-royal-deep shadow-[inset_0_0_0_1px_oklch(0.62_0.19_255/0.25)]"
-                      : "text-muted-foreground hover:bg-royal/8 hover:text-foreground",
+                      : "text-foreground hover:bg-royal/8 hover:text-foreground",
                   )}
                 >
                   {link.label}

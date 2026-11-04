@@ -127,7 +127,7 @@ function Index() {
         <div className="animate-in fade-in slide-in-from-bottom-6 relative mx-auto w-full max-w-5xl duration-700">
           <div className="mx-auto max-w-5xl text-center">
             {/* Eyebrow — clean, minimal */}
-            <span className="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/[0.08] px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-white/80 backdrop-blur-md">
+            <span className="mt-4 inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/[0.08] px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-white/80 backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
               Cotton Indenting &amp; Sourcing
             </span>
@@ -149,10 +149,10 @@ function Index() {
             {/* CTAs */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <a
-                href="#suppliers"
+                href="#buyers"
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-neutral-900 shadow-lg shadow-black/20 transition-all hover:bg-amber-300 hover:shadow-xl"
               >
-                Explore Our Network
+                Explore Our Buyers
                 <svg
                   className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
                   fill="none"
@@ -475,14 +475,11 @@ function Index() {
         <div className="grid gap-6 md:grid-cols-3">
           {MEMBERSHIPS.map((membership, i) => (
             <Reveal key={membership.abbr} delay={i * 0.1}>
-              <Link
-                to="/membership"
-                className="glass glow-card flex h-full flex-col items-center rounded-3xl p-8 text-center"
-              >
+              <div className="glass glow-card flex h-full flex-col items-center rounded-3xl p-8 text-center">
                 <img
-                  src={seal}
-                  alt={`${membership.abbr} membership seal (demo)`}
-                  className="h-24 w-24 rounded-full"
+                  src={membership.logo}
+                  alt={`${membership.name} (${membership.abbr}) logo`}
+                  className="h-24 w-24 rounded-full object-contain"
                   loading="lazy"
                   width={512}
                   height={512}
@@ -496,7 +493,7 @@ function Index() {
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
                   {membership.desc}
                 </p>
-              </Link>
+              </div>
             </Reveal>
           ))}
         </div>
