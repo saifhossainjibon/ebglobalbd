@@ -27,11 +27,10 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { COMPANY } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
-
+import logo from "@/assets/logo.png";
 const NAV_LINKS = [
   { to: "/", label: "Home" },
   { to: "#about", label: "About Us" },
-  { to: "#suppliers", label: "Our Suppliers" },
   { to: "#buyers", label: "Our Buyers" },
   { to: "#memberships", label: "Membership" },
   { to: "#contact", label: "Contact Us" },
@@ -39,17 +38,12 @@ const NAV_LINKS = [
 
 function BrandMark({ className }: { className?: string }) {
   return (
-    <Link to="/" className={cn("group flex items-center gap-3", className)}>
-      <span className="relative flex h-10 w-10 items-center justify-center">
-        <span className="absolute inset-0 rounded-full border-[3.5px] border-royal transition-colors group-hover:border-royal-glow" />
-        <span className="absolute right-0 top-0.5 h-3 w-3 rounded-full bg-sky-pop transition-transform group-hover:scale-110" />
-        <span className="font-display text-[10px] font-bold tracking-widest text-foreground">
-          EB
-        </span>
-      </span>
-      <span className="font-display text-lg font-bold tracking-[0.14em] text-foreground">
-        EB <span className="text-gradient-royal">GLOBAL</span>
-      </span>
+    <Link to="/">
+      <img
+        src={logo}
+        alt="EB Global"
+        className="h-16 w-auto object-contain transition-transform group-hover:scale-105"
+      />
     </Link>
   );
 }
@@ -141,7 +135,7 @@ function SiteHeader() {
     // </header>
     <header className="fixed inset-x-0 top-0 z-50">
       <div className="mx-auto max-w-7xl px-4 pt-4 sm:px-6">
-        <div className="glass flex items-center justify-between rounded-full px-4 py-3 sm:px-6">
+        <div className="glass flex items-center justify-between rounded-full px-0 py-1 sm:px-6">
           <BrandMark />
 
           <nav className="hidden items-center gap-1 lg:flex">

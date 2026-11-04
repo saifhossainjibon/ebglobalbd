@@ -53,6 +53,8 @@ import buyer11 from "@/assets/buyer/11.webp";
 import buyer12 from "@/assets/buyer/12.webp";
 import buyer13 from "@/assets/buyer/13.webp";
 import buyer14 from "@/assets/buyer/14.webp";
+import buyer15 from "@/assets/buyer/15.webp";
+import buyer16 from "@/assets/buyer/16.webp";
 
 export type Buyer = { name: string; logo: string };
 
@@ -71,6 +73,8 @@ export const BUYERS: Buyer[] = [
   { name: "Buyer 12", logo: buyer12 },
   { name: "Buyer 13", logo: buyer13 },
   { name: "Buyer 14", logo: buyer14 },
+  { name: "Buyer 15", logo: buyer15 },
+  { name: "Buyer 16", logo: buyer16 },
 ];
 
 export const MEMBERSHIPS = [

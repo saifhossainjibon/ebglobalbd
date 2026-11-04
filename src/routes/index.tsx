@@ -58,7 +58,7 @@ export const Route = createFileRoute("/")({
 });
 
 const STATS = [
-  { icon: Calendar, value: String(COMPANY.founded), label: "Founded" },
+  { icon: Calendar, value: "10+", label: "Years Of Experienced" },
   { icon: Ship, value: "10+", label: "Global Cotton Suppliers" },
   { icon: Factory, value: "10+", label: "Leading Spinning Mills" },
   { icon: Award, value: "3", label: "Industry Memberships" },
@@ -103,63 +103,6 @@ function Index() {
   return (
     <div>
       {/* ---------- Hero ---------- */}
-      {/* <section
-        id="home"
-        className="relative flex min-h-[92vh] items-center overflow-hidden px-6 pb-16 pt-36 z-10"
-      >
-        <img
-          src={heroCotton}
-          alt="Cotton bolls in a sunlit cotton field at golden hour"
-          width={1920}
-          height={1088}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-primary/85 via-primary/30 to-transparent" />
-        <div className="aurora-blob bottom-[-30%] right-[-10%] size-[30rem] bg-gold/50" />
-
-        <div className="animate-in fade-in slide-in-from-bottom-6 relative mx-auto w-full max-w-4xl duration-700">
-          <div className="glass rounded-4xl p-8 text-center shadow-glow sm:p-14">
-            <span className="bg-gradient-gold inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-extrabold uppercase tracking-[0.28em] text-black">
-              Cotton Indenting &amp; Sourcing · Est. 2022
-            </span>
-            <h1 className="mt-7 font-latic text-4xl font-semibold leading-[1.1] text-foreground sm:text-6xl">
-              A Trusted Bridge <span className="text-gold-gradient">Between Continents</span>
-            </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-              EB Global is a distinguished cotton indenting and sourcing firm, connecting the
-              world's most reputable cotton merchants with Bangladesh's leading spinning mills —
-              built on a foundation of trust, precision and discretion.
-            </p>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-              <a
-                href="#suppliers"
-                className="rounded-full bg-primary px-7 py-3 text-sm font-semibold text-primary-foreground shadow-md transition-transform hover:scale-[1.03]"
-              >
-                Explore Our Network
-              </a>
-              <a
-                href="#contact"
-                className="rounded-full border border-border bg-background/60 px-7 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
-              >
-                Contact Us
-              </a>
-            </div>
-          </div>
-
-          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            {STATS.map((stat) => (
-              <div key={stat.label} className="glass rounded-2xl px-4 py-5 text-center">
-                <p className="font-display text-2xl font-semibold text-foreground sm:text-3xl">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
       <section
         id="home"
         className="relative flex min-h-screen items-center overflow-hidden px-6 pb-20 pt-22 z-10"
@@ -187,8 +130,6 @@ function Index() {
             <span className="inline-flex items-center gap-2.5 rounded-full border border-white/20 bg-white/[0.08] px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.3em] text-white/80 backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-amber-400" />
               Cotton Indenting &amp; Sourcing
-              <span className="text-white/30">·</span>
-              Est. 2022
             </span>
 
             {/* Headline — tighter, editorial */}
@@ -268,9 +209,8 @@ function Index() {
               strong understanding of the international cotton trade and textile industry, we
               provide reliable, transparent, and tailored sourcing solutions that meet the evolving
               needs of our partners. <br /> <br />
-              Since our establishment in 2022, we have focused on building strong international
-              networks, fostering long-term business relationships, and delivering excellence
-              throughout the cotton supply chain.
+              We have focused on building strong international networks, fostering long-term
+              business relationships, and delivering excellence throughout the cotton supply chain.
               <br />
               Our commitment to integrity, professionalism, and operational efficiency enables us to
               simplify international trade while ensuring seamless coordination between suppliers
@@ -457,28 +397,27 @@ function Index() {
           </div>
         </Reveal>
       </section>
-
-      {/* ---------- Supplier ---------- */}
-      <div id="suppliers" className="mx-auto max-w-7xl px-6">
+      {/* ---------- Buyers ---------- */}
+      <div id="buyers" className="mx-auto max-w-7xl px-6 pt-20">
         <section className="pt-16">
           <Reveal className="text-center">
             <div className="relative mb-14 ">
               <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
-                Global Network
+                Buyer Network
               </span>
               <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-                Our Supplier <span className="text-gradient-royal">Network</span>
+                Mills We <span className="text-gradient-royal">Proudly Serve</span>
               </h2>
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                EB Global has rapidly established direct and trusted relationships with top-tier
-                global suppliers — reinforcing its credibility within a short period of time.
+                EB Global maintains strong working relationships with a wide range of leading
+                spinning mills across Bangladesh.
               </p>
             </div>
           </Reveal>
           <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
-            {SUPPLIERS.map((supplier, i) => (
-              <Reveal key={supplier.name} delay={(i % 3) * 0.07}>
-                <LogoTile name={supplier.name} logo={supplier.logo} className="w-full" />
+            {BUYERS.map((buyer, i) => (
+              <Reveal key={buyer.name} delay={(i % 3) * 0.07}>
+                <LogoTile name={buyer.name} logo={buyer.logo} className="w-full" />
               </Reveal>
             ))}
           </div>
@@ -516,32 +455,6 @@ function Index() {
               </div>
             </div>
           </Reveal>
-        </section>
-      </div>
-      {/* ---------- Buyers ---------- */}
-      <div id="buyers" className="mx-auto max-w-7xl px-6 pt-20">
-        <section className="pt-16">
-          <Reveal className="text-center">
-            <div className="relative mb-14 ">
-              <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
-                Buyer Network
-              </span>
-              <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-                Mills We <span className="text-gradient-royal">Proudly Serve</span>
-              </h2>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                EB Global maintains strong working relationships with a wide range of leading
-                spinning mills across Bangladesh.
-              </p>
-            </div>
-          </Reveal>
-          <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
-            {BUYERS.map((buyer, i) => (
-              <Reveal key={buyer.name} delay={(i % 3) * 0.07}>
-                <LogoTile name={buyer.name} logo={buyer.logo} className="w-full" />
-              </Reveal>
-            ))}
-          </div>
         </section>
       </div>
       {/* ---------- Memberships ---------- */}
