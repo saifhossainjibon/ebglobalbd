@@ -6,10 +6,7 @@ export const COMPANY = {
   phoneLinks: ["+8801726642791", "+8801727253485"],
   email: "info@ebglobalbd.com",
   addressLines: [
-    "JCX Business Tower, 1136/A, Block-I,",
-    "Bashundhara Vatara, Dhaka 1229,",
-    "Bangladesh",
-  ],
+    "JCX Business Tower, 1136/A, Block-I, Bashundhara Vatara, Dhaka 1229, Bangladesh"],
   mapEmbed: "https://www.google.com/maps?q=JCX+Biz+Tower,+Bashundhara+R-A,+Dhaka+1229&output=embed",
 };
 

@@ -55,7 +55,7 @@ export function LogoTile({
   return (
     <div
       className={cn(
-        "group flex h-28 items-center justify-center overflow-hidden rounded-2xl border border-border bg-card p-6 transition-colors hover:border-royal/40",
+        "group flex h-28 items-center justify-center overflow-hidden rounded-2xl border border-border bg-card p-2 transition-colors hover:border-royal/40",
         className,
       )}
     >
