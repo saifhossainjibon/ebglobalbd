@@ -26,7 +26,7 @@ import {
 } from "lucide-react";
 import { useReducedMotion } from "motion/react";
 import { useId } from "react";
-// import heroCotton from "@/assets/hero-bg.jfif";
+import marketing from "@/assets/marketing.png";
 import heroCotton from "@/assets/bg.png";
 import bgcotton from "@/assets/cotton-field.jpg";
 import cottonLeft from "@/assets/cotton-left.png";
@@ -325,35 +325,6 @@ const FLOWER_PATTERN = [
   { size: "size-24 sm:size-32", rot: 22 },
 ];
 
-function FlowerRow({ className = "" }: { className?: string }) {
-  const reduce = useReducedMotion();
-  return (
-    <div
-      aria-hidden
-      className={cn(
-        "pointer-events-none absolute inset-x-0 flex items-center justify-between px-2 sm:px-6",
-        className,
-      )}
-    >
-      {FLOWER_PATTERN.map((f, i) => (
-        <motion.div
-          key={i}
-          className="shrink-0"
-          style={{ rotate: f.rot }}
-          animate={reduce ? undefined : { rotate: [f.rot - 6, f.rot + 6, f.rot - 6] }}
-          transition={{
-            duration: 8 + (i % 3),
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: i * 0.35,
-          }}
-        >
-          <Flower className={f.size} />
-        </motion.div>
-      ))}
-    </div>
-  );
-}
 function Index() {
   const [active, setActive] = useState(0);
   return (
@@ -361,7 +332,7 @@ function Index() {
       {/* ---------- Hero ---------- */}
       <section
         id="home"
-        className="relative z-10 flex min-h-screen items-center overflow-hidden px-6 pt-2 pb-20 "
+        className="relative z-10 flex min-h-screen items-center overflow-hidden px-6 pt-22 pb-20"
       >
         <style>{`
     @keyframes ebKenBurns { from { transform: scale(1); } to { transform: scale(1.08); } }
@@ -381,17 +352,15 @@ function Index() {
         />
 
         {/* Overlay: dark for the text, tinted royal toward the bottom to match the site */}
-        <div className="absolute inset-0 bg-black/10 backdrop-blur-sm" />
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-[var(--royal-deep)]/90" /> */}
-        {/* <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-transparent" /> */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-[var(--royal-deep)]/90" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-transparent" />
 
         {/* Glows */}
         <div className="pointer-events-none absolute right-0 bottom-0 h-[32rem] w-[32rem] rounded-full bg-amber-400/20 blur-[120px]" />
         <div className="pointer-events-none absolute -bottom-32 -left-24 h-[28rem] w-[28rem] rounded-full bg-[var(--royal-glow)]/30 blur-[120px]" />
 
-        {/* <div className="bg-white/10 backdrop-blur-xl mx-auto"></div> */}
         {/* Content */}
-        <div className="animate-in fade-in slide-in-from-bottom-6 relative mx-auto w-full max-w-7xl duration-700 mt-28">
+        <div className="animate-in fade-in slide-in-from-bottom-6 relative mx-auto w-full max-w-5xl duration-700">
           <div className="mx-auto max-w-5xl text-center">
             {/* Eyebrow */}
             <span className="mt-4 inline-flex items-center gap-2.5 rounded-full border border-white/30 bg-white/10 px-4 py-1.5 text-[10px] font-semibold tracking-[0.3em] text-white/90 uppercase shadow-lg shadow-black/20 backdrop-blur-xl">
@@ -436,8 +405,7 @@ function Index() {
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center  border border-white/40  backdrop-blur-xl  
-                rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-neutral-900 shadow-xl shadow-black/25 ring-4 ring-white/20 transition-all hover:-translate-y-0.5 hover:bg-amber-300 hover:shadow-2xl"
+                className="inline-flex items-center rounded-full border border-white/40 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/20 backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-white/20"
               >
                 Contact Us
               </a>
@@ -484,6 +452,7 @@ function Index() {
           <span className="eb-scrolldot h-1.5 w-1 rounded-full bg-white" />
         </a>
       </section>
+
       {/* ---------- Who we are ---------- */}
       <section id="about" className="backdrop-blur-2xl">
         <div className="relative isolate overflow-hidden">
@@ -503,7 +472,15 @@ function Index() {
           />
           <div className="relative overflow-hidden  bg-white/10 backdrop-blur-3xl px-4 py-16 sm:px-8 sm:py-24">
             {/* Main glass card */}
-            <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/70 bg-white/10 p-6 shadow-2xl shadow-[var(--royal-deep)]/25 backdrop-blur-2xl sm:p-10 lg:p-14">
+            <div
+              className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/70 bg-white/10 p-6 shadow-2xl shadow-[var(--royal-deep)]/25 backdrop-blur-2xl sm:p-10 lg:p-14"
+              style={{
+                backgroundImage: `url(${cottonRight})`,
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "bottom right",
+                backgroundSize: "400px", // or "contain" / "40%"
+              }}
+            >
               {/* Glass highlights */}
               <div
                 aria-hidden
@@ -645,7 +622,6 @@ function Index() {
       </section>
 
       {/* ---------- define ---------- */}
-      {/* define  */}
       <section className="relative isolate overflow-x-clip px-4 pt-10 sm:px-6">
         {/* Soft linear gradient panel */}
         <div
@@ -663,13 +639,16 @@ function Index() {
         />
         <div
           aria-hidden
-          className="absolute bottom-0 left-10 -z-10 size-72 rounded-full bg-[var(--primary)]/20 blur-3xl"
+          className="absolute top-00 left-10 -z-10 size-80 rounded-full bg-[var(--royal-glow)]/25 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="absolute bottom-00 left-0 -z-10 size-72 rounded-full bg-[var(--primary)]/20 blur-3xl"
         />
 
         {/* NEW: wrapper so the plant can sit behind the glass box */}
         <div className="relative isolate mx-auto max-w-7xl">
-          {/* NEW: cotton plant, bottom-left, BEHIND the blur */}
-          <div aria-hidden className="pointer-events-none absolute inset-0 z-11">
+          <div aria-hidden className="pointer-events-none absolute inset-0 z-11 hidden sm:block">
             <div className="absolute -bottom-8 -left-6 size-[20rem] rounded-full bg-[var(--royal-glow)]/35 blur-3xl sm:size-[26rem]" />
             <CottonPlant className="absolute -bottom-0 -left-4 w-[16rem] sm:-left-4 sm:w-[22rem] lg:w-[28rem]" />
           </div>
@@ -771,7 +750,7 @@ function Index() {
             <div className="absolute bottom-10 right-[8%] size-80 rounded-full bg-[var(--primary)]/25 blur-3xl" />
           </div>
 
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-7xl">
             <Reveal className="mx-auto max-w-2xl text-center">
               <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
                 Buyer Network
@@ -797,28 +776,54 @@ function Index() {
                 />
                 <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
                   {BUYERS.map((buyer) => (
-                    <LogoTile
+                    <div
                       key={buyer.name}
-                      name={buyer.name}
-                      logo={buyer.logo}
-                      className="h-30 w-full transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/15 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-                    />
+                      className="group rounded-[1.25rem] bg-linear-to-br from-[var(--royal-deep)] via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/15 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                    >
+                      <div className="h-27 w-full rounded-[calc(1.25rem-1.5px)] bg-white">
+                        <LogoTile
+                          name={buyer.name}
+                          logo={buyer.logo}
+                          className="h-full w-full border-0 bg-transparent"
+                        />
+                      </div>
+                    </div>
                   ))}
                 </div>
               </div>
             </Reveal>
           </div>
         </section>
+      </div>
+      {/* ═════════ Logistics ═════════ */}
+      <section className="relative isolate mb-6 px-6 pt-28" aria-labelledby="logistics-heading">
+        {/* Soft linear gradient panel */}
+        <div
+          aria-hidden
+          className="absolute inset-x-0 top-16 -bottom-10 -z-10 rounded-[2.5rem]"
+          style={{
+            backgroundImage:
+              "linear-gradient(180deg, transparent 0%, color-mix(in oklab, var(--royal-glow) 14%, white) 45%, transparent 100%)",
+          }}
+        />
+        {/* Blobs for the glass to blur */}
+        <div
+          aria-hidden
+          className="absolute top-32 right-[8%] -z-10 size-72 rounded-full bg-[var(--royal-glow)]/30 blur-3xl"
+        />
+        <div
+          aria-hidden
+          className="absolute bottom-10 left-[8%] -z-10 size-80 rounded-full bg-[var(--primary)]/25 blur-3xl"
+        />
 
-        {/* ═════════ Logistics ═════════ */}
-        <section className="mx-auto max-w-6xl px-6 pb-4 pt-24" aria-labelledby="logistics-heading">
+        <div className="mx-auto max-w-7xl">
           <Reveal>
-            {/* Photo */}
-            <div className="group relative h-64 overflow-hidden rounded-[2rem] border border-border shadow-xl shadow-primary/10 sm:h-96">
+            {/* Photo on top */}
+            <div className="group relative h-64 overflow-hidden rounded-[2.5rem] border border-border shadow-xl shadow-primary/10 sm:h-96">
               <img
-                src={bgcotton}
+                src={portContainers}
                 alt="Container ship loading at an international port"
-                className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                className="h-full w-full object-cover object-center transition-transform duration-[900ms] ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 loading="lazy"
                 width={1600}
                 height={1008}
@@ -829,78 +834,107 @@ function Index() {
               />
             </div>
 
-            {/* Glass card overlapping the photo */}
-            <div
-              className={`${GLASS} relative z-10 -mt-24 rounded-[2rem] bg-white/65 p-6 sm:-mt-32 sm:mx-10 sm:p-10`}
-            >
-              <span
+            {/* Glass container overlapping the photo */}
+            <div className="relative isolate z-10 -mt-24 overflow-hidden rounded-[2.5rem] border border-white/70 shadow-2xl shadow-[var(--royal-deep)]/25 ring-1 ring-inset ring-white/50 sm:-mt-32 sm:mx-10">
+              {/* Layer 1: frosted glass */}
+              <div aria-hidden className="absolute inset-0 z-[1] bg-white/65 backdrop-blur-xl" />
+              <div
                 aria-hidden
-                className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent"
+                className="pointer-events-none absolute inset-x-16 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-white to-transparent"
               />
 
-              <div className="grid gap-6 lg:grid-cols-2 lg:gap-12">
-                <div>
-                  <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
+              {/* Layer 2: content */}
+              <div className="relative z-[3] p-6 sm:p-10 lg:p-14">
+                {/* Heading */}
+                <div className="mb-12 text-center sm:mb-14">
+                  <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
                     Global Logistics
                   </span>
                   <h2
                     id="logistics-heading"
-                    className="mt-5 font-display text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl"
+                    className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
                   >
-                    From origin to <span className="text-gradient-royal">spinning mill</span>
+                    From origin to
+                    <br />
+                    <span className="text-gradient-royal">spinning mill</span>
                   </h2>
+                  <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
                 </div>
-                <p className="text-base leading-relaxed text-foreground/75 lg:pt-2">
-                  We make international cotton trade run smoothly, and we keep everything open and
-                  transparent along the way. Whether the cotton comes from the Americas, Africa,
-                  Central Asia, or the Indian subcontinent, we handle it all the way through to the
-                  mills in Bangladesh.
-                </p>
-              </div>
 
-              {/* Horizontal route */}
-              <ol
-                className="relative mt-10 grid gap-4 border-t border-white/70 pt-8 md:grid-cols-5"
-                aria-label="Cotton route to Bangladesh"
-              >
-                {/* desktop line */}
-                <span
-                  aria-hidden
-                  className="absolute left-[10%] right-[10%] top-[3.25rem] hidden h-[2px] rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] md:block"
-                />
-                {/* mobile spine */}
-                <span
-                  aria-hidden
-                  className="absolute bottom-5 left-5 top-[3.25rem] w-[2px] -translate-x-1/2 rounded-full bg-linear-to-b from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] md:hidden"
-                />
+                {/* Dark glass card with gradient border */}
+                <div className="group mx-auto max-w-5xl rounded-[2rem] bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-2xl shadow-[var(--royal-deep)]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--royal-deep)]/40 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                  <div className="relative overflow-hidden rounded-[calc(2rem-1.5px)] bg-[var(--royal-deep)]/80 p-8 backdrop-blur-2xl sm:p-10 lg:p-12">
+                    <div className="aurora-blob -right-16 -top-16 size-64 bg-[var(--royal-glow)]/35" />
+                    <div className="aurora-blob -bottom-24 -left-16 size-56 bg-[var(--primary)]/30" />
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-white/60 to-transparent"
+                    />
 
-                {ORIGINS.map(({ label, icon: Icon }) => (
-                  <li
-                    key={label}
-                    className="flex items-center gap-4 md:flex-col md:gap-3 md:text-center"
-                  >
-                    <span className={NODE}>
-                      <Icon className="h-4 w-4 text-cotton" />
+                    <div className="relative grid items-start gap-6 lg:grid-cols-[auto_1fr] lg:gap-10">
+                      <span className="inline-flex size-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 lg:size-16">
+                        <Ship className="h-7 w-7 text-white lg:h-8 lg:w-8" aria-hidden />
+                      </span>
+
+                      <div>
+                        <p className="text-base leading-relaxed text-white/90 sm:text-lg lg:text-[19px] lg:leading-relaxed">
+                          We make international cotton trade run smoothly, and we keep everything
+                          open and transparent along the way. Whether the cotton comes from the
+                          Americas, Africa, Central Asia, or the Indian subcontinent, we handle it
+                          all the way through to the mills in Bangladesh.
+                        </p>
+                        <div className="mt-8 h-[3px] w-12 rounded-full bg-linear-to-r from-white to-white/10 transition-all duration-500 group-hover:w-full" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Horizontal route */}
+                <ol
+                  className="relative mx-auto mt-12 grid max-w-5xl gap-4 pt-2 md:grid-cols-5"
+                  aria-label="Cotton route to Bangladesh"
+                >
+                  {/* desktop line */}
+                  <span
+                    aria-hidden
+                    className="absolute left-[10%] right-[10%] top-[1.25rem] hidden h-[2px] rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] md:block"
+                  />
+                  {/* mobile spine */}
+                  <span
+                    aria-hidden
+                    className="absolute bottom-5 left-5 top-[1.25rem] w-[2px] -translate-x-1/2 rounded-full bg-linear-to-b from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] md:hidden"
+                  />
+
+                  {ORIGINS.map(({ label, icon: Icon }) => (
+                    <li
+                      key={label}
+                      className="flex items-center gap-4 md:flex-col md:gap-3 md:text-center"
+                    >
+                      <span className={NODE}>
+                        <Icon className="h-4 w-4 text-cotton" />
+                      </span>
+                      <span className="text-gradient-royal text-[15px] font-extrabold">
+                        {label}
+                      </span>
+                    </li>
+                  ))}
+
+                  <li className="flex items-center gap-4 md:flex-col md:gap-3 md:text-center">
+                    <span className={`${NODE} md:size-10`}>
+                      <Factory className="h-4 w-4 text-cotton" />
                     </span>
-                    <span className="text-[15px] font-semibold text-foreground/85">{label}</span>
+                    <span className="text-gradient-royal text-[15px] font-extrabold">
+                      Mills in Bangladesh
+                    </span>
                   </li>
-                ))}
-
-                <li className="flex items-center gap-4 md:flex-col md:gap-3 md:text-center">
-                  <span className={`${NODE} md:size-10`}>
-                    <Factory className="h-4 w-4 text-cotton" />
-                  </span>
-                  <span className="text-gradient-royal text-[15px] font-extrabold">
-                    Mills in Bangladesh
-                  </span>
-                </li>
-              </ol>
+                </ol>
+              </div>
             </div>
           </Reveal>
-        </section>
-      </div>
+        </div>
+      </section>
       {/* ---------- Marketing Team ---------- */}
-      <section className="relative isolate px-6 pt-28 mb-18">
+      <section className="relative isolate mb-18 px-6 pt-28" aria-labelledby="marketing-heading">
         {/* Soft linear gradient panel */}
         <div
           aria-hidden
@@ -920,72 +954,84 @@ function Index() {
           className="absolute right-[8%] bottom-10 -z-10 size-80 rounded-full bg-[var(--primary)]/25 blur-3xl"
         />
 
-        {/* Main glass container */}
-        <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/70 shadow-2xl shadow-[var(--royal-deep)]/25 ring-1 ring-inset ring-white/50">
-          <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
-            {/* <FlowerRow className="-top-8 sm:-top-12" /> */}
-            <FlowerRow className="-bottom-8 sm:-bottom-12" />
-          </div>
-          {/* <div aria-hidden className="absolute inset-0 z-[1] bg-white/55 backdrop-blur-xl" />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute inset-x-16 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-white to-transparent"
-          /> */}
+        <div className="mx-auto max-w-7xl">
+          <Reveal>
+            {/* Photo on top */}
+            <div className="group relative h-64 overflow-hidden rounded-[2.5rem] border border-border shadow-xl shadow-primary/10 sm:h-96">
+              <img
+                src={marketing}
+                alt="EB Global marketing and business development team"
+                // className="object-center h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                className="h-full w-full object-cover object-[center_30%] transition-transform duration-[900ms] ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                loading="lazy"
+                width={1600}
+                height={1008}
+              />
+              <div
+                aria-hidden
+                className="absolute inset-0 bg-gradient-to-t from-[var(--royal-deep)]/60 via-[var(--primary)]/15 to-transparent"
+              />
+            </div>
 
-          {/* Heading */}
-          <div className="relative z-[3] p-6 sm:p-10 lg:p-14">
-            <Reveal className="text-center">
-              <div className="mb-12 sm:mb-14">
-                <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
-                  Marketing Team
-                </span>
-                <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                  Driven by Expertise.
-                  <br />
-                  <span className="text-gradient-royal">Defined by Results.</span>
-                </h2>
-                <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
-              </div>
-            </Reveal>
+            {/* Glass container overlapping the photo */}
+            <div className="relative isolate z-10 -mt-24 overflow-hidden rounded-[2.5rem] border border-white/70 shadow-2xl shadow-[var(--royal-deep)]/25 ring-1 ring-inset ring-white/50 sm:-mt-32 sm:mx-10">
+              {/* Layer 1: frosted glass */}
+              <div aria-hidden className="absolute inset-0 z-[1] bg-white/65 backdrop-blur-xl" />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-16 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-white to-transparent"
+              />
 
-            {/* Dark glass card with gradient border */}
-            <Reveal delay={0.1}>
-              <div className="group mx-auto max-w-5xl rounded-[2rem] bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-2xl shadow-[var(--royal-deep)]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--royal-deep)]/40 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-                <div className="relative overflow-hidden rounded-[calc(2rem-1.5px)] bg-[var(--royal-deep)]/80 p-8 backdrop-blur-2xl sm:p-10 lg:p-12">
-                  {/* Aurora blobs */}
-                  <div className="aurora-blob -right-16 -top-16 size-64 bg-[var(--royal-glow)]/35" />
-                  <div className="aurora-blob -bottom-24 -left-16 size-56 bg-[var(--primary)]/30" />
+              {/* Layer 2: content */}
+              <div className="relative z-[3] p-6 sm:p-10 lg:p-14">
+                {/* Heading */}
+                <div className="mb-12 text-center sm:mb-14">
+                  <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
+                    Marketing Team
+                  </span>
+                  <h2
+                    id="marketing-heading"
+                    className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
+                  >
+                    Driven by Expertise.
+                    <br />
+                    <span className="text-gradient-royal">Defined by Results.</span>
+                  </h2>
+                  <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
+                </div>
 
-                  {/* Top highlight line */}
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-white/60 to-transparent"
-                  />
+                {/* Dark glass card with gradient border */}
+                <div className="group mx-auto max-w-5xl rounded-[2rem] bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-2xl shadow-[var(--royal-deep)]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--royal-deep)]/40 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                  <div className="relative overflow-hidden rounded-[calc(2rem-1.5px)] bg-[var(--royal-deep)]/80 p-8 backdrop-blur-2xl sm:p-10 lg:p-12">
+                    <div className="aurora-blob -right-16 -top-16 size-64 bg-[var(--royal-glow)]/35" />
+                    <div className="aurora-blob -bottom-24 -left-16 size-56 bg-[var(--primary)]/30" />
+                    <div
+                      aria-hidden
+                      className="pointer-events-none absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-white/60 to-transparent"
+                    />
 
-                  <div className="relative grid items-start gap-6 lg:grid-cols-[auto_1fr] lg:gap-10">
-                    {/* White glass icon tile */}
-                    <span className="inline-flex size-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 lg:size-16">
-                      <Quote className="h-7 w-7 text-white lg:h-8 lg:w-8" aria-hidden />
-                    </span>
+                    <div className="relative grid items-start gap-6 lg:grid-cols-[auto_1fr] lg:gap-10">
+                      <span className="inline-flex size-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 lg:size-16">
+                        <Quote className="h-7 w-7 text-white lg:h-8 lg:w-8" aria-hidden />
+                      </span>
 
-                    <div>
-                      <p className="text-base leading-relaxed text-white/90 sm:text-lg lg:text-[19px] lg:leading-relaxed">
-                        At EB Global, our Marketing and Business Development Team brings together
-                        extensive industry experience, market intelligence, and exceptional
-                        negotiation skills. With a deep understanding of international cotton
-                        markets, we excel at identifying opportunities, building lasting
-                        partnerships, and closing deals with confidence, precision, and
-                        professionalism.
-                      </p>
-
-                      {/* Bottom accent line */}
-                      <div className="mt-8 h-[3px] w-12 rounded-full bg-linear-to-r from-white to-white/10 transition-all duration-500 group-hover:w-full" />
+                      <div>
+                        <p className="text-base leading-relaxed text-white/90 sm:text-lg lg:text-[19px] lg:leading-relaxed">
+                          At EB Global, our Marketing and Business Development Team brings together
+                          extensive industry experience, market intelligence, and exceptional
+                          negotiation skills. With a deep understanding of international cotton
+                          markets, we excel at identifying opportunities, building lasting
+                          partnerships, and closing deals with confidence, precision, and
+                          professionalism.
+                        </p>
+                        <div className="mt-8 h-[3px] w-12 rounded-full bg-linear-to-r from-white to-white/10 transition-all duration-500 group-hover:w-full" />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </Reveal>
-          </div>
+            </div>
+          </Reveal>
         </div>
       </section>
       {/* ---------- Memberships ---------- */}
@@ -996,6 +1042,23 @@ function Index() {
           className="absolute inset-0 -z-10 h-full w-full object-contain object-center  rotate-180 -scale-x-100"
         />
         <div className="relative mx-auto bg-white/10 p-6  backdrop-blur-2xl sm:p-10 lg:p-14">
+          <div
+            aria-hidden
+            className="absolute inset-x-0 top-16 -bottom-10 -z-10 rounded-[2.5rem]"
+            style={{
+              backgroundImage:
+                "linear-gradient(180deg, transparent 0%, color-mix(in oklab, var(--royal-glow) 20%, white) 45%, transparent 100%)",
+            }}
+          />
+          {/* Blobs for the glass to blur */}
+          <div
+            aria-hidden
+            className="absolute top-32 right-[8%] -z-10 size-72 rounded-full bg-[var(--royal-glow)]/30 blur-3xl"
+          />
+          <div
+            aria-hidden
+            className="absolute bottom-10 left-[8%] -z-10 size-80 rounded-full bg-[var(--primary)]/25 blur-3xl"
+          />
           {/* membership  */}
           <div className="mb-30 relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/70 bg-white/70 p-6 shadow-2xl shadow-[var(--royal-deep)]/25 ring-1 ring-inset ring-white/50 backdrop-blur-2xl sm:p-8 lg:p-12">
             <Reveal className="text-center">
@@ -1015,30 +1078,6 @@ function Index() {
               </div>
             </Reveal>
 
-            {/* <Reveal delay={0.05}>
-              <ul className="glass grid divide-y divide-foreground/10 overflow-hidden rounded-[2rem] md:grid-cols-3 md:divide-x md:divide-y-0">
-                {MEMBERSHIPS.map((m) => (
-                  <li
-                    key={m.abbr}
-                    className="flex flex-col p-8 transition-colors duration-300 hover:bg-white/40 sm:p-10"
-                  >
-                    <img
-                      src={m.logo}
-                      alt={`${m.name} (${m.abbr}) logo`}
-                      className="size-16 rounded-full bg-white object-contain ring-1 ring-foreground/10"
-                      loading="lazy"
-                      width={512}
-                      height={512}
-                    />
-                    <p className="text-gradient-royal mt-8 font-display text-3xl font-extrabold tracking-tight">
-                      {m.abbr}
-                    </p>
-                    <p className="mt-1 text-sm font-semibold text-foreground">{m.name}</p>
-                    <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{m.desc}</p>
-                  </li>
-                ))}
-              </ul>
-            </Reveal> */}
             <Reveal delay={0.05}>
               {/* Gradient Border Wrapper */}
               <div className="overflow-hidden rounded-[2rem] bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-2xl shadow-[var(--royal-deep)]/30">
@@ -1050,7 +1089,7 @@ function Index() {
                   {MEMBERSHIPS.map((m) => (
                     <li
                       key={m.abbr}
-                      className="group relative flex flex-col p-8 transition-colors duration-300 hover:bg-white/5 sm:p-10"
+                      className="group relative flex flex-col items-center p-8 transition-colors duration-300 hover:bg-white/5 sm:p-10"
                     >
                       {/* Logo Container: Kept white to match the image's background, added a subtle glow */}
                       <div className="relative w-fit">
@@ -1066,7 +1105,7 @@ function Index() {
                       </div>
 
                       {/* Accent: Changed to white/sky for contrast on dark bg */}
-                      <p className="mt-8 font-display text-3xl font-extrabold tracking-tight text-white transition-colors duration-300 group-hover:text-sky-200">
+                      <p className=" mt-8 font-display text-3xl font-extrabold tracking-tight text-white transition-colors duration-300 group-hover:text-sky-200">
                         {m.abbr}
                       </p>
 
@@ -1074,7 +1113,9 @@ function Index() {
                       <p className="mt-1 text-sm font-semibold text-white/90">{m.name}</p>
 
                       {/* Description: Changed to white/60 */}
-                      <p className="mt-4 text-sm leading-relaxed text-white/60">{m.desc}</p>
+                      <p className="text-center mt-4 text-sm leading-relaxed text-white/60">
+                        {m.desc}
+                      </p>
                     </li>
                   ))}
                 </ul>
