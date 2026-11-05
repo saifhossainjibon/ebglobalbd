@@ -1097,10 +1097,10 @@ function Index() {
                         <img
                           src={m.logo}
                           alt={`${m.name} (${m.abbr}) logo`}
-                          className="relative size-16 rounded-full bg-white object-contain p-1 shadow-sm ring-1 ring-white/20"
+                          className="relative size-26 rounded-full bg-white object-contain p-1 "
                           loading="lazy"
-                          width={512}
-                          height={512}
+                          width={600}
+                          height={600}
                         />
                       </div>
 
