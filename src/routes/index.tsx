@@ -24,10 +24,13 @@ import {
   Quote,
   type LucideIcon,
 } from "lucide-react";
-
+import { useReducedMotion } from "motion/react";
+import { useId } from "react";
 // import heroCotton from "@/assets/hero-bg.jfif";
 import heroCotton from "@/assets/bg.png";
 import bgcotton from "@/assets/cotton-field.jpg";
+import cottonLeft from "@/assets/cotton-left.png";
+import cottonRight from "@/assets/cotton-right.png";
 import bgliner from "@/assets/bg-3.png";
 import { BUYERS, COMPANY, MEMBERSHIPS, SOLUTIONS } from "@/lib/site-data";
 import { Marquee } from "@/components/marquee";
@@ -43,6 +46,55 @@ const ORIGINS = [
   { label: "Central Asia", icon: Globe2 },
   { label: "Indian subcontinent", icon: Ship },
 ];
+function Flower({ className = "" }: { className?: string }) {
+  return (
+    <svg aria-hidden viewBox="0 0 400 400" className={className}>
+      <defs>
+        <linearGradient id="fl-a" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" style={{ stopColor: "var(--royal-glow)" }} />
+          <stop offset="100%" style={{ stopColor: "var(--primary)" }} />
+        </linearGradient>
+        <linearGradient id="fl-b" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" style={{ stopColor: "#ffffff" }} />
+          <stop offset="100%" style={{ stopColor: "var(--royal-glow)" }} />
+        </linearGradient>
+        <radialGradient id="fl-c" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stopColor="#fde68a" />
+          <stop offset="100%" stopColor="#f59e0b" />
+        </radialGradient>
+      </defs>
+
+      {/* Back petals */}
+      {Array.from({ length: 8 }).map((_, i) => (
+        <ellipse
+          key={`a${i}`}
+          cx="200"
+          cy="100"
+          rx="38"
+          ry="95"
+          fill="url(#fl-a)"
+          opacity="0.9"
+          transform={`rotate(${i * 45} 200 200)`}
+        />
+      ))}
+      {/* Front petals */}
+      {Array.from({ length: 8 }).map((_, i) => (
+        <ellipse
+          key={`b${i}`}
+          cx="200"
+          cy="128"
+          rx="26"
+          ry="66"
+          fill="url(#fl-b)"
+          opacity="0.95"
+          transform={`rotate(${i * 45 + 22.5} 200 200)`}
+        />
+      ))}
+      {/* Center */}
+      <circle cx="200" cy="200" r="30" fill="url(#fl-c)" />
+    </svg>
+  );
+}
 const VALUES = [
   {
     icon: ShieldCheck,
@@ -137,42 +189,169 @@ const CONTACT_ITEMS = [
 const FRAME_SHADOW =
   "shadow-[0_24px_60px_-24px_oklch(0.35_0.08_265/0.55),0_8px_24px_-12px_oklch(0.35_0.08_265/0.35)]";
 
-function WaveBlobs() {
+function Boll({ x, y, s = 1, rot = 0 }: { x: number; y: number; s?: number; rot?: number }) {
   return (
-    <>
-      <style>{`
-        @keyframes ebBlob { from { transform: translate3d(-2%, 0, 0); } to { transform: translate3d(3%, 3%, 0); } }
-        .eb-blob { animation: ebBlob 20s ease-in-out infinite alternate; }
-        @media (prefers-reduced-motion: reduce) { .eb-blob { animation: none; } }
-      `}</style>
+    <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
+      {/* open burr (bracts) */}
+      <path
+        d="M0,24 C-32,22 -46,-6 -38,-32 C-24,-14 -9,-10 0,2 C9,-10 24,-14 38,-32 C46,-6 32,22 0,24 Z"
+        fill="url(#cf-burr)"
+      />
+      {/* cotton puffs */}
+      <g fill="url(#cf-puff)" stroke="white" strokeOpacity="0.9" strokeWidth="1.5">
+        <circle cx="-22" cy="-16" r="21" />
+        <circle cx="22" cy="-16" r="21" />
+        <circle cx="-11" cy="-44" r="19" />
+        <circle cx="13" cy="-42" r="19" />
+        <circle cx="0" cy="-26" r="25" />
+      </g>
+    </g>
+  );
+}
 
-      <svg
-        aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 h-full w-full"
-        viewBox="0 0 1440 1000"
-        preserveAspectRatio="none"
-      >
-        <defs>
-          <linearGradient id="cb-1" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" style={{ stopColor: "var(--royal-glow)" }} />
-            <stop offset="55%" style={{ stopColor: "var(--primary)" }} />
-            <stop offset="100%" style={{ stopColor: "var(--royal-glow)" }} />
-          </linearGradient>
-          <filter id="cb-blur" x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="60" />
-          </filter>
-        </defs>
-
-        <g filter="url(#cb-blur)">
-          <path
-            className="eb-blob"
-            d="M-40,420 C160,240 420,300 640,420 C860,540 1100,600 1300,430 C1420,330 1480,420 1500,520 C1400,760 1100,860 820,780 C560,705 330,830 120,740 C-30,680 -80,520 -40,420 Z"
-            fill="url(#cb-1)"
-            opacity="0.5"
+function CottonPlant({ className = "" }: { className?: string }) {
+  return (
+    <svg aria-hidden viewBox="0 0 420 500" className={className} fill="none">
+      <defs>
+        <radialGradient id="cf-puff" cx="40%" cy="35%" r="75%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop
+            offset="70%"
+            style={{ stopColor: "color-mix(in oklab, var(--royal-glow) 22%, white)" }}
           />
-        </g>
-      </svg>
-    </>
+          <stop
+            offset="100%"
+            style={{ stopColor: "color-mix(in oklab, var(--primary) 38%, white)" }}
+          />
+        </radialGradient>
+        <linearGradient id="cf-burr" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" style={{ stopColor: "var(--primary)", stopOpacity: 0.85 }} />
+          <stop offset="100%" style={{ stopColor: "var(--royal-deep)", stopOpacity: 0.95 }} />
+        </linearGradient>
+        <linearGradient id="cf-stem" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0%" style={{ stopColor: "var(--royal-deep)" }} />
+          <stop offset="100%" style={{ stopColor: "var(--primary)" }} />
+        </linearGradient>
+        <linearGradient id="cf-leaf" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" style={{ stopColor: "var(--royal-glow)", stopOpacity: 0.55 }} />
+          <stop offset="100%" style={{ stopColor: "var(--primary)", stopOpacity: 0.5 }} />
+        </linearGradient>
+      </defs>
+
+      {/* stems */}
+      <g stroke="url(#cf-stem)" strokeWidth="6" strokeLinecap="round">
+        <path d="M70,500 C78,420 96,345 150,270" />
+        <path d="M150,270 C180,220 210,180 254,140" />
+        <path d="M104,372 C70,340 50,305 44,262" />
+        <path d="M96,404 C150,380 200,372 262,318" />
+      </g>
+
+      {/* leaves */}
+      <g fill="url(#cf-leaf)">
+        <path d="M120,330 C84,322 64,296 66,268 C98,272 122,296 120,330 Z" />
+        <path d="M186,236 C214,222 242,226 258,246 C230,262 200,258 186,236 Z" />
+        <path d="M84,440 C118,434 146,452 152,480 C118,484 90,468 84,440 Z" />
+        <path d="M204,360 C230,364 250,384 250,408 C224,404 206,386 204,360 Z" />
+      </g>
+
+      {/* bolls */}
+      <Boll x={254} y={150} s={1} rot={14} />
+      <Boll x={46} y={276} s={0.85} rot={-18} />
+      <Boll x={264} y={326} s={0.9} rot={22} />
+      <Boll x={150} y={282} s={0.8} rot={-6} />
+    </svg>
+  );
+}
+function CottonFlower({ className = "" }: { className?: string }) {
+  const uid = useId().replace(/:/g, "");
+  return (
+    <svg aria-hidden viewBox="0 0 200 200" className={className} fill="none">
+      <defs>
+        <radialGradient id={`cfl-petal-${uid}`} cx="50%" cy="85%" r="95%">
+          <stop offset="0%" stopColor="#ffffff" />
+          <stop
+            offset="65%"
+            style={{ stopColor: "color-mix(in oklab, var(--royal-glow) 18%, white)" }}
+          />
+          <stop
+            offset="100%"
+            style={{ stopColor: "color-mix(in oklab, var(--primary) 40%, white)" }}
+          />
+        </radialGradient>
+        <radialGradient id={`cfl-core-${uid}`} cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stopColor="#fde68a" />
+          <stop offset="100%" stopColor="#f59e0b" />
+        </radialGradient>
+      </defs>
+
+      {/* 5 broad overlapping petals */}
+      {Array.from({ length: 5 }).map((_, i) => (
+        <path
+          key={i}
+          d="M100,100 C58,84 52,34 100,12 C148,34 142,84 100,100 Z"
+          fill={`url(#cfl-petal-${uid})`}
+          stroke="white"
+          strokeOpacity="0.9"
+          strokeWidth="1.5"
+          transform={`rotate(${i * 72} 100 100)`}
+        />
+      ))}
+
+      {/* petal veins */}
+      <g stroke="var(--primary)" strokeOpacity="0.18" strokeWidth="1" strokeLinecap="round">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <path key={i} d="M100,96 L100,36" transform={`rotate(${i * 72} 100 100)`} />
+        ))}
+      </g>
+
+      {/* staminal column */}
+      <circle cx="100" cy="100" r="13" fill={`url(#cfl-core-${uid})`} />
+      <g fill="#f59e0b">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <circle key={i} cx="100" cy="82" r="2.4" transform={`rotate(${i * 45} 100 100)`} />
+        ))}
+      </g>
+    </svg>
+  );
+}
+
+const FLOWER_PATTERN = [
+  { size: "size-20 sm:size-28", rot: -12 },
+  { size: "size-14 sm:size-20", rot: 18 },
+  { size: "size-24 sm:size-32", rot: 6 },
+  { size: "size-14 sm:size-20", rot: -20 },
+  { size: "size-20 sm:size-28", rot: 14 },
+  { size: "size-14 sm:size-20", rot: -6 },
+  { size: "size-24 sm:size-32", rot: 22 },
+];
+
+function FlowerRow({ className = "" }: { className?: string }) {
+  const reduce = useReducedMotion();
+  return (
+    <div
+      aria-hidden
+      className={cn(
+        "pointer-events-none absolute inset-x-0 flex items-center justify-between px-2 sm:px-6",
+        className,
+      )}
+    >
+      {FLOWER_PATTERN.map((f, i) => (
+        <motion.div
+          key={i}
+          className="shrink-0"
+          style={{ rotate: f.rot }}
+          animate={reduce ? undefined : { rotate: [f.rot - 6, f.rot + 6, f.rot - 6] }}
+          transition={{
+            duration: 8 + (i % 3),
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: i * 0.35,
+          }}
+        >
+          <Flower className={f.size} />
+        </motion.div>
+      ))}
+    </div>
   );
 }
 function Index() {
@@ -257,7 +436,8 @@ function Index() {
               </a>
               <a
                 href="#contact"
-                className="inline-flex items-center rounded-full border border-white/40 bg-white/10 px-7 py-3.5 text-sm font-semibold text-white shadow-lg shadow-black/20 backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:bg-white/20"
+                className="inline-flex items-center  border border-white/40  backdrop-blur-xl  
+                rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-neutral-900 shadow-xl shadow-black/25 ring-4 ring-white/20 transition-all hover:-translate-y-0.5 hover:bg-amber-300 hover:shadow-2xl"
               >
                 Contact Us
               </a>
@@ -333,7 +513,6 @@ function Index() {
                 aria-hidden
                 className="pointer-events-none absolute -top-24 -left-24 size-72 rounded-full bg-white/60 blur-3xl"
               />
-
               <div className="relative grid items-center gap-12 lg:grid-cols-3">
                 <Reveal className="lg:col-span-2">
                   <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/50 px-4 py-1.5 text-[11px] font-bold tracking-[0.22em] text-sky-pop uppercase shadow-sm backdrop-blur-md">
@@ -397,62 +576,68 @@ function Index() {
                 </Reveal>
               </div>
             </div>
-            {/* solutions  */}
-            <div className="mt-28 relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/70 bg-white/70 p-6 shadow-2xl shadow-[var(--royal-deep)]/25 backdrop-blur-2xl sm:p-10 lg:p-14">
-              <Reveal className="text-center">
-                <div className="relative mb-14">
-                  <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
-                    What We Do
-                  </span>
-                  <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-                    Tailored solutions for{" "}
-                    <span className="text-gradient-royal">a global industry</span>
-                  </h2>
-                  <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
-                </div>
-              </Reveal>
-              <div className="mx-auto grid max-w-7xl gap-6 pb-10 sm:grid-cols-2 lg:grid-cols-4">
-                {SOLUTIONS.map((solution, i) => {
-                  const Icon = SOLUTION_ICONS[i]!;
-                  return (
-                    <Reveal key={solution.title} delay={i * 0.08}>
-                      {/* Gradient border wrapper (from Mission box) */}
-                      <div className="group h-full rounded-3xl bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-lg shadow-[var(--royal-deep)]/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--royal-deep)]/40">
-                        {/* Dark glass card (from Mission box) */}
-                        <div className="relative h-full overflow-hidden rounded-[calc(1.5rem-1.5px)] bg-[var(--royal-deep)]/80 p-7 backdrop-blur-2xl">
-                          {/* Aurora blob (adjusted for smaller cards) */}
-                          <div className="aurora-blob -right-16 -top-16 size-40 bg-[var(--royal-glow)]/30" />
+            <div className="relative isolate mx-auto mt-28 max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/70 shadow-2xl shadow-[var(--royal-deep)]/25">
+              {/* Layer 0: cotton plant sits BEHIND the glass */}
+              <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+                <div className="absolute -bottom-10 -left-10 size-[26rem] rounded-full bg-[var(--royal-glow)]/35 blur-3xl" />
+                <CottonPlant className="absolute -bottom-16 -left-10 w-[22rem] sm:w-[28rem] lg:w-[34rem]" />
+              </div>
 
-                          {/* Top highlight line */}
-                          <div
-                            aria-hidden
-                            className="pointer-events-none absolute inset-x-6 top-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent"
-                          />
+              {/* Layer 1: frosted glass that blurs the plant */}
+              <div aria-hidden className="absolute inset-0 z-[1] bg-white/55 backdrop-blur-2xl" />
 
-                          <div className="relative">
-                            {/* Icon: Changed to white glass so it pops on the dark background */}
-                            <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
-                              <Icon className="h-7 w-7 text-white" />
-                            </span>
+              {/* Layer 2: content */}
+              <div className="relative z-[2] p-6 sm:p-10 lg:p-14">
+                <Reveal className="text-center">
+                  <div className="relative mb-14">
+                    <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
+                      What We Do
+                    </span>
+                    <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
+                      Tailored solutions for{" "}
+                      <span className="text-gradient-royal">a global industry</span>
+                    </h2>
+                    <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
+                  </div>
+                </Reveal>
 
-                            {/* Title: Changed to white */}
-                            <h3 className="font-display text-xl font-semibold tracking-tight text-white">
-                              {solution.title}
-                            </h3>
+                <div className="mx-auto grid max-w-7xl gap-6 pb-10 sm:grid-cols-2 lg:grid-cols-4">
+                  {SOLUTIONS.map((solution, i) => {
+                    const Icon = SOLUTION_ICONS[i]!;
+                    return (
+                      <Reveal key={solution.title} delay={i * 0.08}>
+                        {/* Gradient border wrapper */}
+                        <div className="group h-full rounded-3xl bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-lg shadow-[var(--royal-deep)]/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--royal-deep)]/40">
+                          {/* Dark glass card */}
+                          <div className="relative h-full overflow-hidden rounded-[calc(1.5rem-1.5px)] bg-[var(--royal-deep)]/80 p-7 backdrop-blur-2xl">
+                            <div className="aurora-blob -right-16 -top-16 size-40 bg-[var(--royal-glow)]/30" />
 
-                            {/* Description: Changed to white/70 for readability */}
-                            <p className="mt-2 text-[15px] leading-relaxed text-white/70">
-                              {solution.desc}
-                            </p>
+                            <div
+                              aria-hidden
+                              className="pointer-events-none absolute inset-x-6 top-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent"
+                            />
 
-                            {/* Bottom accent line (from Mission box) */}
-                            <div className="mt-6 h-[3px] w-10 rounded-full bg-linear-to-r from-white to-white/10 transition-all duration-500 group-hover:w-full" />
+                            <div className="relative">
+                              <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
+                                <Icon className="h-7 w-7 text-white" />
+                              </span>
+
+                              <h3 className="font-display text-xl font-semibold tracking-tight text-white">
+                                {solution.title}
+                              </h3>
+
+                              <p className="mt-2 text-[15px] leading-relaxed text-white/70">
+                                {solution.desc}
+                              </p>
+
+                              <div className="mt-6 h-[3px] w-10 rounded-full bg-linear-to-r from-white to-white/10 transition-all duration-500 group-hover:w-full" />
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </Reveal>
-                  );
-                })}
+                      </Reveal>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
@@ -460,7 +645,8 @@ function Index() {
       </section>
 
       {/* ---------- define ---------- */}
-      <section className="relative isolate px-6 pt-10">
+      {/* define  */}
+      <section className="relative isolate overflow-x-clip px-4 pt-10 sm:px-6">
         {/* Soft linear gradient panel */}
         <div
           aria-hidden
@@ -479,112 +665,94 @@ function Index() {
           aria-hidden
           className="absolute bottom-0 left-10 -z-10 size-72 rounded-full bg-[var(--primary)]/20 blur-3xl"
         />
-        <div className="relative mx-auto max-w-7xl  rounded-[2.5rem] border border-white/70 bg-white/10 p-6 shadow-2xl shadow-[var(--royal-deep)]/25 backdrop-blur-2xl sm:p-10 lg:p-14">
-          <div className="mx-auto grid max-w-7xl gap-12 px-4 py-14 sm:px-8 lg:grid-cols-5 lg:gap-16 lg:px-12">
-            {/* Left: sticky heading */}
-            <Reveal className="lg:col-span-2">
-              <div className="lg:sticky lg:top-28">
-                <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
-                  Why EB Global
-                </span>
-                <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                  Defined by <span className="text-gradient-royal">excellence</span>
-                </h2>
-                <div className="mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
 
-                {/* Decorative count */}
+        {/* NEW: wrapper so the plant can sit behind the glass box */}
+        <div className="relative isolate mx-auto max-w-7xl">
+          {/* NEW: cotton plant, bottom-left, BEHIND the blur */}
+          <div aria-hidden className="pointer-events-none absolute inset-0 z-11">
+            <div className="absolute -bottom-8 -left-6 size-[20rem] rounded-full bg-[var(--royal-glow)]/35 blur-3xl sm:size-[26rem]" />
+            <CottonPlant className="absolute -bottom-0 -left-4 w-[16rem] sm:-left-4 sm:w-[22rem] lg:w-[28rem]" />
+          </div>
+
+          {/* CHANGED: z-10 so the glass sits above the plant; mx-auto/max-w-7xl moved to the wrapper */}
+          <div className="relative z-10 rounded-[2.5rem] border border-white/70 bg-white/10 p-4 shadow-2xl shadow-[var(--royal-deep)]/25 backdrop-blur-2xl sm:p-10 lg:p-14">
+            {/* Reduced padding on mobile (px-2 py-8) */}
+            <div className="mx-auto grid max-w-7xl gap-10 px-2 py-8 sm:px-8 sm:py-14 lg:grid-cols-5 lg:gap-16 lg:px-12">
+              {/* Left: sticky heading */}
+              <Reveal className="lg:col-span-2">
+                <div className=" lg:top-28">
+                  <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
+                    Why EB Global
+                  </span>
+                  <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                    Defined by <span className="text-gradient-royal">excellence</span>
+                  </h2>
+                  <div className="mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
+
+                  {/* Decorative count */}
+                  <span
+                    aria-hidden
+                    className="text-gradient-royal mt-10 hidden font-display text-[9rem] leading-none font-extrabold opacity-20 select-none lg:block"
+                  >
+                    {String(EXCELLENCE.length).padStart(2, "0")}
+                  </span>
+                </div>
+              </Reveal>
+
+              {/* Right: timeline */}
+              <ol className="relative lg:col-span-3">
+                {/* Gradient spine - Moved to left-5 on mobile to align with smaller icons */}
                 <span
                   aria-hidden
-                  className="text-gradient-royal mt-10 hidden font-display text-[9rem] leading-none font-extrabold opacity-20 select-none lg:block"
-                >
-                  {String(EXCELLENCE.length).padStart(2, "0")}
-                </span>
-              </div>
-            </Reveal>
+                  className="absolute top-4 bottom-4 left-5 w-[2px] -translate-x-1/2 rounded-full bg-linear-to-b from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]/20 lg:left-7"
+                />
 
-            {/* Right: timeline */}
-            <ol className="relative lg:col-span-3">
-              {/* Gradient spine */}
-              <span
-                aria-hidden
-                className="absolute top-4 bottom-4 left-7 w-[2px] -translate-x-1/2 rounded-full bg-linear-to-b from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]/20"
-              />
+                {EXCELLENCE.map((text, i) => {
+                  const Icon = ICONS[i] || Sparkles;
+                  return (
+                    <Reveal key={text} delay={i * 0.06}>
+                      {/* Reduced gap from 5 to 3.5 on mobile */}
+                      <li className="group relative flex items-stretch gap-3.5 pb-5 last:pb-0 sm:gap-5">
+                        {/* Node - Smaller on mobile (size-10), normal on sm+ (size-14) */}
+                        <span className="relative z-10 mt-2 flex size-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-royal-deep via-primary to-[var(--royal-glow)] shadow-lg shadow-primary/30 ring-2 ring-white/80 transition-transform duration-300 group-hover:scale-110 sm:size-14 sm:ring-4">
+                          <Icon className="h-5 w-5 text-cotton sm:h-6 sm:w-6" />
+                        </span>
 
-              {EXCELLENCE.map((text, i) => {
-                const Icon = ICONS[i] || Sparkles;
-                return (
-                  <Reveal key={text} delay={i * 0.06}>
-                    <li className="group relative flex items-stretch gap-5 pb-5 last:pb-0">
-                      {/* Node */}
-                      <span className="relative z-10 mt-2 flex size-14 shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-royal-deep via-primary to-[var(--royal-glow)] shadow-lg shadow-primary/30 ring-4 ring-white/80 transition-transform duration-300 group-hover:scale-110">
-                        <Icon className="h-6 w-6 text-cotton" />
-                      </span>
+                        {/* Gradient Border Wrapper */}
+                        <div className="relative mb-2 flex-1 rounded-2xl bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-lg shadow-[var(--royal-deep)]/20 transition-all duration-300 group-hover:translate-x-1.5 group-hover:shadow-2xl group-hover:shadow-[var(--royal-deep)]/40">
+                          {/* Dark Glass Card - Reduced inner padding on mobile */}
+                          <div className="relative h-full overflow-hidden rounded-[calc(1rem-1.5px)] bg-[var(--royal-deep)]/80 p-4 backdrop-blur-2xl sm:p-5 sm:pr-6">
+                            {/* Aurora blob */}
+                            <div className="aurora-blob -right-16 -top-16 size-32 bg-[var(--royal-glow)]/30 opacity-50 transition-opacity duration-300 group-hover:opacity-100" />
 
-                      {/* Gradient Border Wrapper */}
-                      <div className="mb-2 relative flex-1 rounded-2xl bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-lg shadow-[var(--royal-deep)]/20 transition-all duration-300 group-hover:translate-x-1.5 group-hover:shadow-2xl group-hover:shadow-[var(--royal-deep)]/40">
-                        {/* Dark Glass Card */}
-                        <div className="relative h-full overflow-hidden rounded-[calc(1rem-1.5px)] bg-[var(--royal-deep)]/80 p-5 pr-6 backdrop-blur-2xl">
-                          {/* Aurora blob */}
-                          <div className="aurora-blob -right-16 -top-16 size-32 bg-[var(--royal-glow)]/30 opacity-50 transition-opacity duration-300 group-hover:opacity-100" />
+                            {/* Left gradient edge accent */}
+                            <span
+                              aria-hidden
+                              className="absolute top-0 bottom-0 left-0 w-[3px] bg-linear-to-b from-white/80 via-white/20 to-transparent opacity-40 transition-opacity duration-300 group-hover:opacity-100"
+                            />
 
-                          {/* Left gradient edge accent */}
-                          <span
-                            aria-hidden
-                            className="absolute top-0 bottom-0 left-0 w-[3px] bg-linear-to-b from-white/80 via-white/20 to-transparent opacity-40 transition-opacity duration-300 group-hover:opacity-100"
-                          />
+                            {/* Top highlight line */}
+                            <div
+                              aria-hidden
+                              className="pointer-events-none absolute inset-x-6 top-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent"
+                            />
 
-                          {/* Top highlight line */}
-                          <div
-                            aria-hidden
-                            className="pointer-events-none absolute inset-x-6 top-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent"
-                          />
-
-                          <p className="relative pr-12 text-[16.5px] leading-relaxed font-medium text-white/90 transition-colors duration-300 group-hover:text-white">
-                            {text}
-                          </p>
+                            {/* Text - Removed pr-12 on mobile so it uses full width */}
+                            <p className="relative text-[15px] leading-relaxed font-medium text-white/90 transition-colors duration-300 group-hover:text-white sm:text-[16.5px] sm:pr-12">
+                              {text}
+                            </p>
+                          </div>
                         </div>
-                      </div>
-                    </li>
-                  </Reveal>
-                );
-              })}
-            </ol>
+                      </li>
+                    </Reveal>
+                  );
+                })}
+              </ol>
+            </div>
           </div>
         </div>
       </section>
-      {/* ---------- Global network band ---------- */}
-      {/* <section className="mx-auto max-w-7xl px-6 pt-28">
-        <Reveal>
-          <div className="group relative overflow-hidden rounded-3xl border border-border/60 shadow-[0_20px_60px_-20px_rgba(0,0,0,0.4)]">
-            <img
-              src={globalNetwork}
-              alt="Global trade routes across the world"
-              className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-              loading="lazy"
-              width={1280}
-              height={1024}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-background via-background/75 to-transparent" />
-            <div className="pointer-events-none absolute -left-24 top-1/2 h-64 w-64 -translate-y-1/2 rounded-full bg-royal-glow/20 blur-[100px]" />
 
-            <div className="relative px-8 py-14 sm:px-12 sm:py-16">
-              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-royal-glow/30 bg-background/40 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-royal-glow backdrop-blur-md">
-                <span className="h-1.5 w-1.5 rounded-full bg-royal-glow" />
-                Global Reach
-              </div>
-
-              <h2 className="max-w-lg font-display text-3xl font-bold tracking-tight sm:text-4xl">
-                A network spanning <span className="text-gradient-royal">four continents</span>
-              </h2>
-
-              <p className="mt-4 max-w-md text-base leading-relaxed text-muted-foreground">
-                Direct, trusted relationships with top-tier global suppliers reinforcing EB Global's
-                credibility within a short period of time.
-              </p>
-            </div>
-          </div>
-        </Reveal>
-      </section> */}
       {/* ---------- Buyers ---------- */}
 
       <div id="buyers">
@@ -753,63 +921,71 @@ function Index() {
         />
 
         {/* Main glass container */}
-        <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/70 bg-white/70 p-6 shadow-2xl shadow-[var(--royal-deep)]/25 ring-1 ring-inset ring-white/50 backdrop-blur-2xl sm:p-10 lg:p-14">
+        <div className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/70 shadow-2xl shadow-[var(--royal-deep)]/25 ring-1 ring-inset ring-white/50">
+          <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+            {/* <FlowerRow className="-top-8 sm:-top-12" /> */}
+            <FlowerRow className="-bottom-8 sm:-bottom-12" />
+          </div>
+          {/* <div aria-hidden className="absolute inset-0 z-[1] bg-white/55 backdrop-blur-xl" />
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-x-16 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent"
-          />
+            className="pointer-events-none absolute inset-x-16 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-white to-transparent"
+          /> */}
 
           {/* Heading */}
-          <Reveal className="text-center">
-            <div className="mb-12 sm:mb-14">
-              <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
-                Marketing Team
-              </span>
-              <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-                Driven by Expertise.
-                <br />
-                <span className="text-gradient-royal">Defined by Results.</span>
-              </h2>
-              <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
-            </div>
-          </Reveal>
+          <div className="relative z-[3] p-6 sm:p-10 lg:p-14">
+            <Reveal className="text-center">
+              <div className="mb-12 sm:mb-14">
+                <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
+                  Marketing Team
+                </span>
+                <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+                  Driven by Expertise.
+                  <br />
+                  <span className="text-gradient-royal">Defined by Results.</span>
+                </h2>
+                <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
+              </div>
+            </Reveal>
 
-          {/* Dark glass card with gradient border */}
-          <Reveal delay={0.1}>
-            <div className="group mx-auto max-w-5xl rounded-[2rem] bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-2xl shadow-[var(--royal-deep)]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--royal-deep)]/40 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
-              <div className="relative overflow-hidden rounded-[calc(2rem-1.5px)] bg-[var(--royal-deep)]/80 p-8 backdrop-blur-2xl sm:p-10 lg:p-12">
-                {/* Aurora blobs */}
-                <div className="aurora-blob -right-16 -top-16 size-64 bg-[var(--royal-glow)]/35" />
-                <div className="aurora-blob -bottom-24 -left-16 size-56 bg-[var(--primary)]/30" />
+            {/* Dark glass card with gradient border */}
+            <Reveal delay={0.1}>
+              <div className="group mx-auto max-w-5xl rounded-[2rem] bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-2xl shadow-[var(--royal-deep)]/30 transition-all duration-300 hover:-translate-y-1 hover:shadow-[var(--royal-deep)]/40 motion-reduce:transition-none motion-reduce:hover:translate-y-0">
+                <div className="relative overflow-hidden rounded-[calc(2rem-1.5px)] bg-[var(--royal-deep)]/80 p-8 backdrop-blur-2xl sm:p-10 lg:p-12">
+                  {/* Aurora blobs */}
+                  <div className="aurora-blob -right-16 -top-16 size-64 bg-[var(--royal-glow)]/35" />
+                  <div className="aurora-blob -bottom-24 -left-16 size-56 bg-[var(--primary)]/30" />
 
-                {/* Top highlight line */}
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-white/60 to-transparent"
-                />
+                  {/* Top highlight line */}
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-white/60 to-transparent"
+                  />
 
-                <div className="relative grid items-start gap-6 lg:grid-cols-[auto_1fr] lg:gap-10">
-                  {/* White glass icon tile */}
-                  <span className="inline-flex size-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 lg:size-16">
-                    <Quote className="h-7 w-7 text-white lg:h-8 lg:w-8" aria-hidden />
-                  </span>
+                  <div className="relative grid items-start gap-6 lg:grid-cols-[auto_1fr] lg:gap-10">
+                    {/* White glass icon tile */}
+                    <span className="inline-flex size-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3 lg:size-16">
+                      <Quote className="h-7 w-7 text-white lg:h-8 lg:w-8" aria-hidden />
+                    </span>
 
-                  <div>
-                    <p className="text-base leading-relaxed text-white/90 sm:text-lg lg:text-[19px] lg:leading-relaxed">
-                      At EB Global, our Marketing and Business Development Team brings together
-                      extensive industry experience, market intelligence, and exceptional
-                      negotiation skills. With a deep understanding of international cotton markets,
-                      we excel at identifying opportunities, building lasting partnerships, and
-                      closing deals with confidence, precision, and professionalism.
-                    </p>
+                    <div>
+                      <p className="text-base leading-relaxed text-white/90 sm:text-lg lg:text-[19px] lg:leading-relaxed">
+                        At EB Global, our Marketing and Business Development Team brings together
+                        extensive industry experience, market intelligence, and exceptional
+                        negotiation skills. With a deep understanding of international cotton
+                        markets, we excel at identifying opportunities, building lasting
+                        partnerships, and closing deals with confidence, precision, and
+                        professionalism.
+                      </p>
 
-                    {/* Bottom accent line */}
-                    <div className="mt-8 h-[3px] w-12 rounded-full bg-linear-to-r from-white to-white/10 transition-all duration-500 group-hover:w-full" />
+                      {/* Bottom accent line */}
+                      <div className="mt-8 h-[3px] w-12 rounded-full bg-linear-to-r from-white to-white/10 transition-all duration-500 group-hover:w-full" />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </Reveal>
+            </Reveal>
+          </div>
         </div>
       </section>
       {/* ---------- Memberships ---------- */}
@@ -918,7 +1094,10 @@ function Index() {
               aria-hidden
               className="pointer-events-none absolute inset-x-16 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent"
             />
-
+            <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+              <div className="absolute -bottom-10 -left-10 size-[26rem] rounded-full bg-[var(--royal-glow)]/35 blur-3xl" />
+              <CottonPlant className="absolute -bottom-6 -left-12 w-[22rem] sm:w-[28rem] lg:w-[34rem]" />
+            </div>
             {/* Heading */}
             <Reveal className="relative text-center">
               <div className="mb-12 sm:mb-14">
