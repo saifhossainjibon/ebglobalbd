@@ -5,36 +5,9 @@ export const COMPANY = {
   phones: ["+880 1726-642791", "+880 1727-253485"],
   phoneLinks: ["+8801726642791", "+8801727253485"],
   email: "info@ebglobalbd.com",
-  addressLines: [
-    "JCX Business Tower, 1136/A, Block-I, Bashundhara Vatara, Dhaka 1229, Bangladesh"],
+  addressLines: ["JCX Business Tower, 1136/A, Block-I, Bashundhara Vatara, Dhaka 1229, Bangladesh"],
   mapEmbed: "https://www.google.com/maps?q=JCX+Biz+Tower,+Bashundhara+R-A,+Dhaka+1229&output=embed",
 };
-
-import supplier1 from "@/assets/suppliers/1.webp";
-import supplier2 from "@/assets/suppliers/2.webp";
-import supplier3 from "@/assets/suppliers/3.webp";
-import supplier4 from "@/assets/suppliers/4.webp";
-import supplier5 from "@/assets/suppliers/5.webp";
-import supplier6 from "@/assets/suppliers/6.webp";
-import supplier7 from "@/assets/suppliers/7.webp";
-import supplier8 from "@/assets/suppliers/8.webp";
-import supplier9 from "@/assets/suppliers/9.webp";
-import supplier10 from "@/assets/suppliers/10.webp";
-
-export type Supplier = { name: string; logo: string };
-
-export const SUPPLIERS: Supplier[] = [
-  { name: "Paul Reinhart", logo: supplier1 },
-  { name: "Olam Agri", logo: supplier2 },
-  { name: "Cargill", logo: supplier3 },
-  { name: "LDC", logo: supplier4 },
-  { name: "StoneX / CDI", logo: supplier5 },
-  { name: "Supplier 6", logo: supplier6 },
-  { name: "Supplier 7", logo: supplier7 },
-  { name: "Supplier 8", logo: supplier8 },
-  { name: "Supplier 9", logo: supplier9 },
-  { name: "Supplier 10", logo: supplier10 },
-];
 
 import badsha from "@/assets/buyer/1.webp";
 import purbani from "@/assets/buyer/2.webp";

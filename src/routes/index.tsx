@@ -1,7 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import {
-  ArrowRight,
   Globe2,
   Handshake,
   ShieldCheck,
@@ -15,102 +14,27 @@ import {
   Building2,
   Phone,
   ArrowUpRight,
-  Navigation,
   Layers,
   Users,
-  BadgeCheck,
-  Briefcase,
-  Zap,
   Quote,
   type LucideIcon,
 } from "lucide-react";
-import { useReducedMotion } from "motion/react";
 import { useId } from "react";
 import marketing from "@/assets/marketing.png";
 import heroCotton from "@/assets/bg.png";
-import bgcotton from "@/assets/cotton-field.jpg";
-import cottonLeft from "@/assets/cotton-left.png";
 import cottonRight from "@/assets/cotton-right.png";
 import bgliner from "@/assets/bg-3.png";
 import { BUYERS, COMPANY, MEMBERSHIPS, SOLUTIONS } from "@/lib/site-data";
-import { Marquee } from "@/components/marquee";
 import { Reveal } from "@/components/reveal";
 import { LogoTile } from "@/components/logo-tile";
 import portContainers from "@/assets/port-containers.jpg";
 import { EXCELLENCE } from "@/lib/site-data";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
+
 const ORIGINS = [
   { label: "Americas", icon: Globe2 },
   { label: "Africa", icon: Globe2 },
   { label: "Central Asia", icon: Globe2 },
   { label: "Indian subcontinent", icon: Ship },
-];
-function Flower({ className = "" }: { className?: string }) {
-  return (
-    <svg aria-hidden viewBox="0 0 400 400" className={className}>
-      <defs>
-        <linearGradient id="fl-a" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" style={{ stopColor: "var(--royal-glow)" }} />
-          <stop offset="100%" style={{ stopColor: "var(--primary)" }} />
-        </linearGradient>
-        <linearGradient id="fl-b" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" style={{ stopColor: "#ffffff" }} />
-          <stop offset="100%" style={{ stopColor: "var(--royal-glow)" }} />
-        </linearGradient>
-        <radialGradient id="fl-c" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stopColor="#fde68a" />
-          <stop offset="100%" stopColor="#f59e0b" />
-        </radialGradient>
-      </defs>
-
-      {/* Back petals */}
-      {Array.from({ length: 8 }).map((_, i) => (
-        <ellipse
-          key={`a${i}`}
-          cx="200"
-          cy="100"
-          rx="38"
-          ry="95"
-          fill="url(#fl-a)"
-          opacity="0.9"
-          transform={`rotate(${i * 45} 200 200)`}
-        />
-      ))}
-      {/* Front petals */}
-      {Array.from({ length: 8 }).map((_, i) => (
-        <ellipse
-          key={`b${i}`}
-          cx="200"
-          cy="128"
-          rx="26"
-          ry="66"
-          fill="url(#fl-b)"
-          opacity="0.95"
-          transform={`rotate(${i * 45 + 22.5} 200 200)`}
-        />
-      ))}
-      {/* Center */}
-      <circle cx="200" cy="200" r="30" fill="url(#fl-c)" />
-    </svg>
-  );
-}
-const VALUES = [
-  {
-    icon: ShieldCheck,
-    title: "Honesty",
-    text: "Straight answers and open dealings at every step.",
-  },
-  {
-    icon: Briefcase,
-    title: "Professionalism",
-    text: "Careful work across the whole cotton supply chain.",
-  },
-  {
-    icon: Zap,
-    title: "Efficiency",
-    text: "Simple trade that keeps suppliers and buyers in step.",
-  },
 ];
 const GLASS =
   "relative border border-white/60 bg-white/50 backdrop-blur-2xl ring-1 ring-inset ring-white/50 " +
@@ -125,13 +49,13 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "EB Global — Cotton Indenting & Sourcing",
+        title: "EB Global — The Cotton Deplomat",
         description:
           "EB Global connects the world's most reputable cotton merchants with Bangladesh's leading spinning mills. A Trusted Bridge Between Continents.",
       },
       {
         property: "og:title",
-        content: "EB Global — Cotton Indenting & Sourcing",
+        content: "EB Global — The Cotton Deplomat",
       },
       {
         property: "og:description",
@@ -153,12 +77,6 @@ const STATS = [
 ];
 
 const SOLUTION_ICONS = [Globe2, Handshake, ShieldCheck, Sparkles];
-
-const CHIPS = [
-  { text: "ICA Member", className: "right-[4%] top-[22%] hidden lg:flex", delay: "0s" },
-  { text: "Since 2022", className: "right-[14%] top-[46%] hidden lg:flex", delay: "1.4s" },
-  { text: "Global Sourcing", className: "right-[6%] top-[68%] hidden lg:flex", delay: "2.6s" },
-];
 
 const CONTACT_ITEMS = [
   {
@@ -186,18 +104,14 @@ const CONTACT_ITEMS = [
     hrefs: [],
   },
 ];
-const FRAME_SHADOW =
-  "shadow-[0_24px_60px_-24px_oklch(0.35_0.08_265/0.55),0_8px_24px_-12px_oklch(0.35_0.08_265/0.35)]";
 
 function Boll({ x, y, s = 1, rot = 0 }: { x: number; y: number; s?: number; rot?: number }) {
   return (
     <g transform={`translate(${x} ${y}) rotate(${rot}) scale(${s})`}>
-      {/* open burr (bracts) */}
       <path
         d="M0,24 C-32,22 -46,-6 -38,-32 C-24,-14 -9,-10 0,2 C9,-10 24,-14 38,-32 C46,-6 32,22 0,24 Z"
         fill="url(#cf-burr)"
       />
-      {/* cotton puffs */}
       <g fill="url(#cf-puff)" stroke="white" strokeOpacity="0.9" strokeWidth="1.5">
         <circle cx="-22" cy="-16" r="21" />
         <circle cx="22" cy="-16" r="21" />
@@ -262,71 +176,8 @@ function CottonPlant({ className = "" }: { className?: string }) {
     </svg>
   );
 }
-function CottonFlower({ className = "" }: { className?: string }) {
-  const uid = useId().replace(/:/g, "");
-  return (
-    <svg aria-hidden viewBox="0 0 200 200" className={className} fill="none">
-      <defs>
-        <radialGradient id={`cfl-petal-${uid}`} cx="50%" cy="85%" r="95%">
-          <stop offset="0%" stopColor="#ffffff" />
-          <stop
-            offset="65%"
-            style={{ stopColor: "color-mix(in oklab, var(--royal-glow) 18%, white)" }}
-          />
-          <stop
-            offset="100%"
-            style={{ stopColor: "color-mix(in oklab, var(--primary) 40%, white)" }}
-          />
-        </radialGradient>
-        <radialGradient id={`cfl-core-${uid}`} cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stopColor="#fde68a" />
-          <stop offset="100%" stopColor="#f59e0b" />
-        </radialGradient>
-      </defs>
-
-      {/* 5 broad overlapping petals */}
-      {Array.from({ length: 5 }).map((_, i) => (
-        <path
-          key={i}
-          d="M100,100 C58,84 52,34 100,12 C148,34 142,84 100,100 Z"
-          fill={`url(#cfl-petal-${uid})`}
-          stroke="white"
-          strokeOpacity="0.9"
-          strokeWidth="1.5"
-          transform={`rotate(${i * 72} 100 100)`}
-        />
-      ))}
-
-      {/* petal veins */}
-      <g stroke="var(--primary)" strokeOpacity="0.18" strokeWidth="1" strokeLinecap="round">
-        {Array.from({ length: 5 }).map((_, i) => (
-          <path key={i} d="M100,96 L100,36" transform={`rotate(${i * 72} 100 100)`} />
-        ))}
-      </g>
-
-      {/* staminal column */}
-      <circle cx="100" cy="100" r="13" fill={`url(#cfl-core-${uid})`} />
-      <g fill="#f59e0b">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <circle key={i} cx="100" cy="82" r="2.4" transform={`rotate(${i * 45} 100 100)`} />
-        ))}
-      </g>
-    </svg>
-  );
-}
-
-const FLOWER_PATTERN = [
-  { size: "size-20 sm:size-28", rot: -12 },
-  { size: "size-14 sm:size-20", rot: 18 },
-  { size: "size-24 sm:size-32", rot: 6 },
-  { size: "size-14 sm:size-20", rot: -20 },
-  { size: "size-20 sm:size-28", rot: 14 },
-  { size: "size-14 sm:size-20", rot: -6 },
-  { size: "size-24 sm:size-32", rot: 22 },
-];
 
 function Index() {
-  const [active, setActive] = useState(0);
   return (
     <div>
       {/* ---------- Hero ---------- */}
@@ -341,7 +192,6 @@ function Index() {
     .eb-scrolldot { animation: ebScrollDot 1.6s ease-in-out infinite; }
     @media (prefers-reduced-motion: reduce) { .eb-kenburns, .eb-scrolldot { animation: none; } }
   `}</style>
-
         {/* Background image (slow zoom) */}
         <img
           src={heroCotton}
@@ -350,7 +200,6 @@ function Index() {
           height={1088}
           className="eb-kenburns absolute inset-0 h-full w-full object-cover"
         />
-
         {/* Overlay: dark for the text, tinted royal toward the bottom to match the site */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-[var(--royal-deep)]/90" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-transparent" />
@@ -667,14 +516,6 @@ function Index() {
                     Defined by <span className="text-gradient-royal">excellence</span>
                   </h2>
                   <div className="mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
-
-                  {/* Decorative count */}
-                  <span
-                    aria-hidden
-                    className="text-gradient-royal mt-10 hidden font-display text-[9rem] leading-none font-extrabold opacity-20 select-none lg:block"
-                  >
-                    {String(EXCELLENCE.length).padStart(2, "0")}
-                  </span>
                 </div>
               </Reveal>
 
@@ -733,7 +574,6 @@ function Index() {
       </section>
 
       {/* ---------- Buyers ---------- */}
-
       <div id="buyers">
         {/* ═════════ Buyer network ═════════ */}
         <section className="relative isolate px-6 pt-28" aria-labelledby="buyers-heading">
@@ -961,8 +801,7 @@ function Index() {
               <img
                 src={marketing}
                 alt="EB Global marketing and business development team"
-                // className="object-center h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-                className="h-full w-full object-cover object-[center_30%] transition-transform duration-[900ms] ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                className="h-full w-full object-cover object-buttom transition-transform duration-[900ms] ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 loading="lazy"
                 width={1600}
                 height={1008}
@@ -1229,33 +1068,6 @@ function Index() {
           </div>
         </div>
       </section>
-
-      {/* ---------- Final CTA ---------- */}
-      {/* <section className="mx-auto max-w-7xl px-6 pt-28">
-        <Reveal>
-          <div className="hero-gradient relative overflow-hidden rounded-4xl border border-royal/25 px-8 py-16 text-center sm:px-14">
-            <div className="pointer-events-none absolute -top-24 left-1/4 h-64 w-64 rounded-full bg-royal/40 blur-3xl animate-aurora" />
-            <div className="pointer-events-none absolute -right-16 -bottom-24 h-72 w-72 rounded-full bg-sky-pop/15 blur-3xl" />
-            <h2 className="relative font-display text-3xl font-bold tracking-tight text-cotton sm:text-4xl">
-              Let's source the world's finest <span className="text-gradient-gold">cotton</span>{" "}
-              together
-            </h2>
-            <p className="relative mx-auto mt-4 max-w-xl text-base text-cotton/75">
-              Whether you are a global merchant or a leading spinning mill, our team is ready to
-              build a lasting partnership with you.
-            </p>
-            <div className="relative mt-9 flex flex-wrap justify-center gap-4">
-              <a
-                href="tel:"
-                className="inline-flex items-center gap-2 rounded-full bg-cotton px-7 py-3.5 text-sm font-bold text-royal-deep transition-all hover:shadow-[0_16px_45px_-12px_oklch(0.97_0.008_250/0.4)]"
-              >
-                <Phone className="h-4 w-4" />
-                WhatsApp Us
-              </a>
-            </div>
-          </div>
-        </Reveal>
-      </section> */}
     </div>
   );
 }

@@ -257,3 +257,45 @@
     color: var(--royal-deep);
   }
 }
+/* =========================================
+   CUSTOM GRADIENT SCROLLBAR
+   ========================================= */
+
+/* 1. Base fallback for Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: oklch(0.3 0.12 266) transparent; /* Uses the brightest part of your gradient */
+}
+
+/* 2. WebKit Browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: transparent; /* Lets your dark background show through */
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 99px; /* Fully rounded pill shape */
+  
+  /* Create padding so the gradient doesn't touch the edges */
+  border: 3px solid transparent; 
+  background-clip: padding-box;
+  
+  /* YOUR CUSTOM GRADIENT */
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.3 0.12 266) 0%,
+    oklch(0.42 0.14 264) 45%,
+    oklch(0.62 0.19 255) 95%
+  );
+  
+  /* Optional: Smooth transition for hover effects */
+  transition: background-image 0.2s ease-in-out;
+}
+
+/* Optional: Make it glow slightly or brighten on hover */
+::-webkit-scrollbar-thumb:hover {
+  border: 2px solid transparent; /* Makes the bar slightly thicker on hover */
+}
