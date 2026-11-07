@@ -34,7 +34,7 @@ const ORIGINS = [
   { label: "Americas", icon: Globe2 },
   { label: "Africa", icon: Globe2 },
   { label: "Central Asia", icon: Globe2 },
-  { label: "Indian subcontinent", icon: Ship },
+  { label: "Indian subcontinent", icon: Globe2 },
 ];
 const GLASS =
   "relative border border-white/60 bg-white/50 backdrop-blur-2xl ring-1 ring-inset ring-white/50 " +
