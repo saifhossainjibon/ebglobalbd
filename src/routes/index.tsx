@@ -19,7 +19,6 @@ import {
   Quote,
   type LucideIcon,
 } from "lucide-react";
-import { useId } from "react";
 import marketing from "@/assets/marketing.png";
 import heroCotton from "@/assets/bg.png";
 import cottonRight from "@/assets/cotton-right.png";
@@ -28,6 +27,7 @@ import { BUYERS, COMPANY, MEMBERSHIPS, SOLUTIONS } from "@/lib/site-data";
 import { Reveal } from "@/components/reveal";
 import { LogoTile } from "@/components/logo-tile";
 import portContainers from "@/assets/port-containers.jpg";
+import portContainer from "@/assets/icon.png";
 import { EXCELLENCE } from "@/lib/site-data";
 
 const ORIGINS = [
@@ -660,8 +660,16 @@ function Index() {
           <Reveal>
             {/* Photo on top */}
             <div className="group relative h-64 overflow-hidden rounded-[2.5rem] border border-border shadow-xl shadow-primary/10 sm:h-96">
-              <img
+              {/* <img
                 src={portContainers}
+                alt="Container ship loading at an international port"
+                className="h-full w-full object-cover object-center transition-transform duration-[900ms] ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
+                loading="lazy"
+                width={1600}
+                height={1008}
+              /> */}
+              <img
+                src={portContainer}
                 alt="Container ship loading at an international port"
                 className="h-full w-full object-cover object-center transition-transform duration-[900ms] ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 loading="lazy"
