@@ -25,6 +25,8 @@ import buyer13 from "@/assets/buyer/13.webp";
 import buyer14 from "@/assets/buyer/14.webp";
 import buyer15 from "@/assets/buyer/15.webp";
 import buyer16 from "@/assets/buyer/16.webp";
+import buyer17 from "@/assets/buyer/17.webp";
+import buyer18 from "@/assets/buyer/18.webp";
 import BCA from "@/assets/membership/BCA.webp";
 import ICA from "@/assets/membership/ICA.webp";
 import BIAA from "@/assets/membership/BIAA.webp";
@@ -48,6 +50,8 @@ export const BUYERS: Buyer[] = [
   { name: "Buyer 14", logo: buyer14 },
   { name: "Buyer 15", logo: buyer15 },
   { name: "Buyer 16", logo: buyer16 },
+  { name: "Buyer 17", logo: buyer17 },
+  { name: "Buyer 18", logo: buyer18 },
 ];
 
 export const MEMBERSHIPS = [

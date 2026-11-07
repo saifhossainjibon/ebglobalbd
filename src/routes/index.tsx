@@ -620,11 +620,12 @@ function Index() {
                   aria-hidden
                   className="absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white to-transparent"
                 />
-                <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
+
+                <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
                   {BUYERS.map((buyer) => (
                     <div
                       key={buyer.name}
-                      className="group rounded-[1.25rem] bg-linear-to-br from-[var(--royal-deep)] via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/15 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                      className="group w-[calc(50%-0.375rem)] rounded-[1.25rem] bg-linear-to-br from-[var(--royal-deep)] via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-primary/15 motion-reduce:transition-none motion-reduce:hover:translate-y-0 sm:w-[calc(33.333%-0.667rem)] lg:w-[calc(25%-0.75rem)]"
                     >
                       <div className="h-27 w-full rounded-[calc(1.25rem-1.5px)] bg-white">
                         <LogoTile
