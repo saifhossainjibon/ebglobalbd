@@ -71,9 +71,9 @@ export const Route = createFileRoute("/")({
 
 const STATS = [
   { icon: Calendar, value: "10+", label: "Years Of Experience" },
-  { icon: Ship, value: "10+", label: "Global Cotton Suppliers" },
+  { icon: Ship, value: "20+", label: "Global Cotton Suppliers" },
   { icon: Factory, value: "20+", label: "Reputed Spinning Mills" },
-  { icon: Award, value: "3", label: "Industry Memberships" },
+  { icon: Handshake, value: "1000+", label: "Contracts Served" },
 ];
 
 const SOLUTION_ICONS = [Globe2, Handshake, ShieldCheck, Sparkles];
@@ -341,11 +341,11 @@ function Index() {
               />
               <div className="relative grid items-center gap-12 lg:grid-cols-3">
                 <Reveal className="lg:col-span-2">
-                  <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/50 px-4 py-1.5 text-[11px] font-bold tracking-[0.22em] text-sky-pop uppercase shadow-sm backdrop-blur-md">
-                    <span className="size-1.5 rounded-full bg-linear-to-br from-[var(--royal-deep)] to-[var(--royal-glow)]" />
-                    Who We Are
+                  <span className="mb-6 inline-flex rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] p-[1.5px] shadow-lg shadow-primary/15">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
+                      Who We Are
+                    </span>
                   </span>
-
                   <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
                     Trust, precision and <span className="text-gradient-royal">discretion</span> in
                     every consignment
@@ -416,8 +416,10 @@ function Index() {
               <div className="relative z-[2] p-6 sm:p-10 lg:p-14">
                 <Reveal className="text-center">
                   <div className="relative mb-14">
-                    <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
-                      What We Do
+                    <span className="inline-flex rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] p-[1.5px] shadow-lg shadow-primary/15">
+                      <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
+                        What We Do
+                      </span>
                     </span>
                     <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
                       Tailored solutions for{" "}
@@ -509,8 +511,10 @@ function Index() {
               {/* Left: sticky heading */}
               <Reveal className="lg:col-span-2">
                 <div className=" lg:top-28">
-                  <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
-                    Why EB Global
+                  <span className="inline-flex rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] p-[1.5px] shadow-lg shadow-primary/15">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
+                      Why EB Global
+                    </span>
                   </span>
                   <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
                     Defined by <span className="text-gradient-royal">excellence</span>
@@ -592,8 +596,10 @@ function Index() {
 
           <div className="mx-auto max-w-7xl">
             <Reveal className="mx-auto max-w-2xl text-center">
-              <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
-                Buyer Network
+              <span className="inline-flex rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] p-[1.5px] shadow-lg shadow-primary/15">
+                <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
+                  Buyer Network
+                </span>
               </span>
               <h2
                 id="buyers-heading"
@@ -660,16 +666,8 @@ function Index() {
           <Reveal>
             {/* Photo on top */}
             <div className="group relative h-64 overflow-hidden rounded-[2.5rem] border border-border shadow-xl shadow-primary/10 sm:h-96">
-              {/* <img
-                src={portContainers}
-                alt="Container ship loading at an international port"
-                className="h-full w-full object-cover object-center transition-transform duration-[900ms] ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-                loading="lazy"
-                width={1600}
-                height={1008}
-              /> */}
               <img
-                src={portContainer}
+                src={portContainers}
                 alt="Container ship loading at an international port"
                 className="h-full w-full object-cover object-center transition-transform duration-[900ms] ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                 loading="lazy"
@@ -695,8 +693,10 @@ function Index() {
               <div className="relative z-[3] p-6 sm:p-10 lg:p-14">
                 {/* Heading */}
                 <div className="mb-12 text-center sm:mb-14">
-                  <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
-                    Global Logistics
+                  <span className="inline-flex rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] p-[1.5px] shadow-lg shadow-primary/15">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
+                      Global Logistics
+                    </span>
                   </span>
                   <h2
                     id="logistics-heading"
@@ -736,51 +736,181 @@ function Index() {
                     </div>
                   </div>
                 </div>
-
-                {/* Horizontal route */}
-                <ol
-                  className="relative mx-auto mt-12 grid max-w-5xl gap-4 pt-2 md:grid-cols-5"
+                {/* Route: origins converge into Mills in Bangladesh */}
+                {/* Route: every origin connects to Mills in Bangladesh (vertical on mobile, horizontal on desktop) */}
+                <div
+                  className="relative mx-auto mt-14 max-w-5xl"
+                  role="group"
                   aria-label="Cotton route to Bangladesh"
                 >
-                  {/* desktop line */}
-                  <span
-                    aria-hidden
-                    className="absolute left-[10%] right-[10%] top-[1.25rem] hidden h-[2px] rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] md:block"
-                  />
-                  {/* mobile spine */}
-                  <span
-                    aria-hidden
-                    className="absolute bottom-5 left-5 top-[1.25rem] w-[2px] -translate-x-1/2 rounded-full bg-linear-to-b from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] md:hidden"
-                  />
+                  <style>{`
+    @keyframes ebFlow { to { stroke-dashoffset: -28; } }
+    .eb-flow { animation: ebFlow 1.4s linear infinite; }
+    @media (prefers-reduced-motion: reduce) { .eb-flow { animation: none; } }
+  `}</style>
 
-                  {ORIGINS.map(({ label, icon: Icon }) => (
-                    <li
-                      key={label}
-                      className="flex items-center gap-4 md:flex-col md:gap-3 md:text-center"
+                  {/* MOBILE: one separate line from each card into the destination (fixed heights keep it aligned) */}
+                  <svg
+                    aria-hidden
+                    viewBox="0 0 48 452"
+                    className="absolute top-0 left-0 h-[452px] w-12 md:hidden"
+                  >
+                    <defs>
+                      <linearGradient
+                        id="m-grad"
+                        gradientUnits="userSpaceOnUse"
+                        x1="0"
+                        y1="0"
+                        x2="0"
+                        y2="420"
+                      >
+                        <stop offset="0%" style={{ stopColor: "var(--royal-glow)" }} />
+                        <stop offset="100%" style={{ stopColor: "var(--royal-deep)" }} />
+                      </linearGradient>
+                    </defs>
+
+                    {ORIGINS.map((_, i) => {
+                      const x = [6, 16, 26, 36][i] ?? 36; // outer card = outer lane, so lines never cross
+                      const y = 40 + i * 96; // card centre
+                      const destY = 420; // destination centre
+                      const r = 8;
+                      const d = `M48 ${y} H${x + r} Q${x} ${y} ${x} ${y + r} V${destY - r} Q${x} ${destY} ${x + r} ${destY} H44`;
+                      return (
+                        <g key={i}>
+                          <path
+                            d={d}
+                            fill="none"
+                            stroke="url(#m-grad)"
+                            strokeWidth="2"
+                            strokeOpacity="0.55"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d={d}
+                            fill="none"
+                            stroke="var(--royal-deep)"
+                            strokeWidth="2.5"
+                            strokeLinecap="round"
+                            strokeDasharray="1 11"
+                            className="eb-flow"
+                          />
+                          <circle cx="47" cy={y} r="3.5" fill="var(--primary)" />
+                        </g>
+                      );
+                    })}
+                    {/* Arrow into the destination */}
+                    <path
+                      d="M39 414 L45 420 L39 426"
+                      fill="none"
+                      stroke="var(--royal-deep)"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+
+                  {/* Origin cards */}
+                  <ol className="grid grid-cols-1 gap-4 pl-12 md:grid-cols-4 md:pl-0">
+                    {ORIGINS.map(({ label, icon: Icon }) => (
+                      <li key={label} className="group relative h-20 md:h-auto">
+                        <div className="h-full rounded-lg  bg-linear-to-br from-primary/90 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-lg shadow-[var(--royal-deep)]/15 transition-all duration-300 group-hover:-translate-y-1.5 group-hover:shadow-xl group-hover:shadow-[var(--royal-deep)]/30 motion-reduce:transition-none motion-reduce:group-hover:translate-y-0">
+                          <div className="relative flex h-full flex-row items-center gap-4 overflow-hidden rounded-[calc(1rem-1.5px)] bg-white/80 px-4 backdrop-blur-xl md:flex-col md:gap-3 md:py-5 md:text-center">
+                            <div
+                              aria-hidden
+                              className="pointer-events-none absolute inset-x-5 top-0 h-px bg-linear-to-r from-transparent via-white to-transparent"
+                            />
+                            <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] shadow-lg shadow-primary/30 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
+                              <Icon className="h-5 w-5 text-cotton" aria-hidden />
+                            </span>
+                            <span className="text-gradient-royal font-display text-base leading-tight font-extrabold sm:text-lg">
+                              {label}
+                            </span>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+
+                  {/* DESKTOP: curved lines converging into the destination */}
+                  <div className="relative hidden h-32 md:block" aria-hidden>
+                    <svg
+                      viewBox="0 0 1000 128"
+                      preserveAspectRatio="none"
+                      className="absolute inset-0 h-full w-full overflow-visible"
                     >
-                      <span className={NODE}>
-                        <Icon className="h-4 w-4 text-cotton" />
-                      </span>
-                      <span className="text-gradient-royal text-[15px] font-extrabold">
-                        {label}
-                      </span>
-                    </li>
-                  ))}
+                      <defs>
+                        <linearGradient id="route-grad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" style={{ stopColor: "var(--royal-glow)" }} />
+                          <stop offset="100%" style={{ stopColor: "var(--royal-deep)" }} />
+                        </linearGradient>
+                      </defs>
 
-                  <li className="flex items-center gap-4 md:flex-col md:gap-3 md:text-center">
-                    <span className={`${NODE} md:size-10`}>
-                      <Factory className="h-4 w-4 text-cotton" />
-                    </span>
-                    <span className="text-gradient-royal text-[15px] font-extrabold">
-                      Mills in Bangladesh
-                    </span>
-                  </li>
-                </ol>
+                      {[
+                        "M125 0 C125 90 400 40 400 128",
+                        "M375 0 C375 90 470 40 470 128",
+                        "M625 0 C625 90 530 40 530 128",
+                        "M875 0 C875 90 600 40 600 128",
+                      ].map((d) => (
+                        <g key={d}>
+                          <path
+                            d={d}
+                            fill="none"
+                            stroke="url(#route-grad)"
+                            strokeWidth="2"
+                            strokeOpacity="0.45"
+                            strokeLinecap="round"
+                            vectorEffect="non-scaling-stroke"
+                          />
+                          <path
+                            d={d}
+                            fill="none"
+                            stroke="var(--royal-deep)"
+                            strokeWidth="3"
+                            strokeLinecap="round"
+                            strokeDasharray="1 13"
+                            vectorEffect="non-scaling-stroke"
+                            className="eb-flow"
+                          />
+                        </g>
+                      ))}
+                    </svg>
+
+                    {["left-[40%]", "left-[47%]", "left-[53%]", "left-[60%]"].map((pos) => (
+                      <span
+                        key={pos}
+                        className={`absolute bottom-0.5 ${pos} size-2.5 -translate-x-1/2 rounded-full bg-[var(--primary)] shadow-md shadow-primary/40 ring-4 ring-white/80`}
+                      />
+                    ))}
+                  </div>
+
+                  {/* Destination */}
+                  <div className="relative mt-5 pl-12 md:mt-0 md:pl-0">
+                    <div className="relative mx-auto flex w-full items-center justify-center md:w-fit">
+                      <span
+                        aria-hidden
+                        className="absolute inset-0 rounded-full bg-[var(--royal-glow)]/50 blur-xl"
+                      />
+                      <span
+                        aria-hidden
+                        className="absolute -inset-1 animate-ping rounded-full border border-[var(--royal-glow)]/40 [animation-duration:3s] motion-reduce:animate-none"
+                      />
+                      <div className="relative flex h-16 w-full items-center justify-center gap-3 rounded-full bg-gradient-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] px-6 shadow-2xl shadow-[var(--royal-deep)]/40 ring-4 ring-white/70 sm:px-8 md:h-auto md:w-auto md:py-4">
+                        <span className="flex size-10 shrink-0 items-center justify-center rounded-full border border-white/30 bg-white/20 backdrop-blur-md">
+                          <Factory className="h-5 w-5 text-white" aria-hidden />
+                        </span>
+                        <span className="font-display text-base font-extrabold tracking-tight text-white sm:text-lg">
+                          Mills in Bangladesh
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
+
       {/* ---------- Marketing Team ---------- */}
       <section className="relative isolate mb-18 px-6 pt-28" aria-labelledby="marketing-heading">
         {/* Soft linear gradient panel */}
@@ -833,8 +963,10 @@ function Index() {
               <div className="relative z-[3] p-6 sm:p-10 lg:p-14">
                 {/* Heading */}
                 <div className="mb-12 text-center sm:mb-14">
-                  <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
-                    Marketing Team
+                  <span className="inline-flex rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] p-[1.5px] shadow-lg shadow-primary/15">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
+                      Marketing Team
+                    </span>
                   </span>
                   <h2
                     id="marketing-heading"
@@ -910,8 +1042,10 @@ function Index() {
           <div className="mb-30 relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/70 bg-white/70 p-6 shadow-2xl shadow-[var(--royal-deep)]/25 ring-1 ring-inset ring-white/50 backdrop-blur-2xl sm:p-8 lg:p-12">
             <Reveal className="text-center">
               <div className="mb-14">
-                <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
-                  Industry Associations
+                <span className="inline-flex rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] p-[1.5px] shadow-lg shadow-primary/15">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
+                    Industry Associations
+                  </span>
                 </span>
                 <h2
                   id="memberships-heading"
@@ -989,8 +1123,10 @@ function Index() {
             {/* Heading */}
             <Reveal className="relative text-center">
               <div className="mb-12 sm:mb-14">
-                <span className="glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
-                  Get In Touch
+                <span className="inline-flex rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] p-[1.5px] shadow-lg shadow-primary/15">
+                  <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
+                    Get In Touch
+                  </span>
                 </span>
                 <h2
                   id="contact-heading"
