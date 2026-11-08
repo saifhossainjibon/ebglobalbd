@@ -27,8 +27,9 @@ import { BUYERS, COMPANY, MEMBERSHIPS, SOLUTIONS } from "@/lib/site-data";
 import { Reveal } from "@/components/reveal";
 import { LogoTile } from "@/components/logo-tile";
 import portContainers from "@/assets/port-containers.jpg";
-import portContainer from "@/assets/icon.png";
+import heroCottonVedio from "@/assets/heroCotton.mp4";
 import { EXCELLENCE } from "@/lib/site-data";
+import { useEffect, useRef, useState } from "react";
 const TEAM = [
   { name: "Kazi Raiyan Hasan" },
   { name: "Kazi Rakib Hasan" },
@@ -198,7 +199,70 @@ function CottonPlant({ className = "" }: { className?: string }) {
     </svg>
   );
 }
-import heroVideo from "@/assets/cutton_video.mp4";
+function CountUp({
+  value,
+  duration = 1800,
+  delay = 0,
+}: {
+  value: string; // e.g. "10+", "3", "20+"
+  duration?: number; // ms
+  delay?: number; // ms
+}) {
+  // Split "10+" into prefix "", number 10, suffix "+"
+  const match = value.match(/^(\D*)(\d+(?:\.\d+)?)(.*)$/);
+  const target = match ? parseFloat(match[2]) : 0;
+  const decimals = match?.[2].split(".")[1]?.length ?? 0;
+
+  const ref = useRef<HTMLSpanElement>(null);
+  const [n, setN] = useState(0);
+
+  useEffect(() => {
+    if (!match || !ref.current) return;
+
+    // // Respect reduced motion: show the final number immediately
+    // if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    //   setN(target);
+    //   return;
+    // }
+
+    let raf = 0;
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect(); // run once
+
+        const start = performance.now() + delay;
+        const tick = (now: number) => {
+          const p = Math.min(Math.max((now - start) / duration, 0), 1);
+          const eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+          setN(target * eased);
+          if (p < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 },
+    );
+    io.observe(ref.current);
+
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, [target, duration, delay]);
+
+  if (!match) return <>{value}</>;
+
+  return (
+    <span ref={ref} aria-label={value} className="tabular-nums">
+      <span aria-hidden>
+        {match[1]}
+        {n.toFixed(decimals)}
+        {match[3]}
+      </span>
+    </span>
+  );
+}
 function Index() {
   return (
     <div>
@@ -215,20 +279,33 @@ function Index() {
     @media (prefers-reduced-motion: reduce) { .eb-kenburns, .eb-scrolldot { animation: none; } }
   `}</style>
         {/* Background image (slow zoom) */}
-        <img
+        {/* <img
           src={heroCotton}
           alt="Cotton bolls in a sunlit cotton field at golden hour"
           width={1920}
           height={1088}
           className="eb-kenburns absolute inset-0 h-full w-full object-cover"
-        />
+        /> */}
+        {/* Background video */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster={heroCottonVedio} // Shows your image while the video loads
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src={heroCottonVedio} type="video/mp4" />
+        </video>
         {/* Overlay: dark for the text, tinted royal toward the bottom to match the site */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-[var(--royal-deep)]/90" />
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-[var(--royal-deep)]/90" /> */}
+        {/* <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-transparent" /> */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/90" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-transparent to-transparent" />
 
         {/* Glows */}
-        <div className="pointer-events-none absolute right-0 bottom-0 h-[32rem] w-[32rem] rounded-full bg-amber-400/20 blur-[120px]" />
-        <div className="pointer-events-none absolute -bottom-32 -left-24 h-[28rem] w-[28rem] rounded-full bg-[var(--royal-glow)]/30 blur-[120px]" />
+        {/* <div className="pointer-events-none absolute right-0 bottom-0 h-[32rem] w-[32rem] rounded-full bg-amber-400/20 blur-[120px]" /> */}
+        {/* <div className="pointer-events-none absolute -bottom-32 -left-24 h-[28rem] w-[28rem] rounded-full bg-[var(--royal-glow)]/30 blur-[120px]" /> */}
 
         {/* Content */}
         <div className="animate-in fade-in slide-in-from-bottom-6 relative mx-auto w-full max-w-5xl duration-700">
@@ -284,14 +361,13 @@ function Index() {
           </div>
 
           {/* Stats: dark glass cards with gradient borders */}
-          <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+          {/* <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
             {STATS.map((stat) => (
               <div
                 key={stat.label}
-                className="group rounded-3xl bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-xl shadow-black/30 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                className="group rounded-3xl  shadow-xl shadow-black/30 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
-                <div className="relative h-full overflow-hidden rounded-[calc(1.5rem-1.5px)] bg-[var(--royal-deep)]/75 px-4 py-6 text-center backdrop-blur-2xl">
-                  <div className="aurora-blob -top-12 -right-12 size-28 bg-[var(--royal-glow)]/30" />
+                <div className="relative h-full overflow-hidden rounded-2xl bg-white/10 px-4 py-4 text-center backdrop-blur-2xl">
                   <div
                     aria-hidden
                     className="pointer-events-none absolute inset-x-5 top-0 h-px bg-linear-to-r from-transparent via-white/60 to-transparent"
@@ -311,17 +387,35 @@ function Index() {
                 </div>
               </div>
             ))}
+          </div> */}
+          <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+            {STATS.map((stat, i) => (
+              <div
+                key={stat.label}
+                className="group rounded-3xl  shadow-xl shadow-black/30 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              >
+                <div className="relative h-full overflow-hidden rounded-2xl bg-white/10 px-4 py-4 text-center backdrop-blur-2xl">
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-x-5 top-0 h-px bg-linear-to-r from-transparent via-white/60 to-transparent"
+                  />
+
+                  <div className="relative">
+                    <span className="mx-auto mb-3 inline-flex size-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
+                      <stat.icon className="h-5 w-5 text-white" aria-hidden />
+                    </span>
+                    <p className="font-display text-3xl font-semibold text-white sm:text-4xl">
+                      <CountUp value={stat.value} delay={i * 150} />
+                    </p>
+                    <p className="mt-1.5 text-[10px] font-medium tracking-[0.2em] text-white/65 uppercase">
+                      {stat.label}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-
-        {/* Scroll cue */}
-        <a
-          href="#about"
-          aria-label="Scroll to next section"
-          className="absolute bottom-6 left-1/2 hidden h-10 w-6 -translate-x-1/2 justify-center rounded-full border border-white/50 pt-2 backdrop-blur-sm sm:flex"
-        >
-          <span className="eb-scrolldot h-1.5 w-1 rounded-full bg-white" />
-        </a>
       </section>
 
       {/* ---------- Who we are ---------- */}
