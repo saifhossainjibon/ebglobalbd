@@ -18,6 +18,8 @@ import {
   Users,
   Quote,
   type LucideIcon,
+  Briefcase,
+  Zap,
 } from "lucide-react";
 import marketing from "@/assets/marketing.png";
 import heroCotton from "@/assets/bg.png";
@@ -263,6 +265,23 @@ function CountUp({
     </span>
   );
 }
+const VALUES = [
+  {
+    icon: ShieldCheck,
+    title: "Honesty",
+    text: "Straight answers and open dealings at every step.",
+  },
+  {
+    icon: Briefcase,
+    title: "Professionalism",
+    text: "Careful work across the whole cotton supply chain.",
+  },
+  {
+    icon: Zap,
+    title: "Efficiency",
+    text: "Simple trade that keeps suppliers and buyers in step.",
+  },
+];
 function Index() {
   return (
     <div>
@@ -361,33 +380,6 @@ function Index() {
           </div>
 
           {/* Stats: dark glass cards with gradient borders */}
-          {/* <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
-            {STATS.map((stat) => (
-              <div
-                key={stat.label}
-                className="group rounded-3xl  shadow-xl shadow-black/30 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0"
-              >
-                <div className="relative h-full overflow-hidden rounded-2xl bg-white/10 px-4 py-4 text-center backdrop-blur-2xl">
-                  <div
-                    aria-hidden
-                    className="pointer-events-none absolute inset-x-5 top-0 h-px bg-linear-to-r from-transparent via-white/60 to-transparent"
-                  />
-
-                  <div className="relative">
-                    <span className="mx-auto mb-3 inline-flex size-10 items-center justify-center rounded-xl border border-white/20 bg-white/10 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
-                      <stat.icon className="h-5 w-5 text-white" aria-hidden />
-                    </span>
-                    <p className="font-display text-3xl font-semibold text-white sm:text-4xl">
-                      {stat.value}
-                    </p>
-                    <p className="mt-1.5 text-[10px] font-medium tracking-[0.2em] text-white/65 uppercase">
-                      {stat.label}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div> */}
           <div className="mx-auto mt-16 grid max-w-4xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
             {STATS.map((stat, i) => (
               <div
@@ -436,151 +428,263 @@ function Index() {
             className="absolute right-0 bottom-40 -z-10 size-80 rounded-full bg-[var(--primary)]/20 blur-3xl"
           />
           <div className="relative overflow-hidden  bg-white/10 backdrop-blur-3xl px-4 py-16 sm:px-8 sm:py-24">
-            {/* Main glass card */}
+            {/* Who We Are */}
             <div
-              className="relative mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/70 bg-white/10 p-6 shadow-2xl shadow-[var(--royal-deep)]/25 backdrop-blur-2xl sm:p-10 lg:p-14"
-              style={{
-                backgroundImage: `url(${cottonRight})`,
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "bottom right",
-                backgroundSize: "400px", // or "contain" / "40%"
-              }}
+              className="relative isolate mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/70 bg-white/30 shadow-2xl shadow-[var(--royal-deep)]/25 ring-1 ring-white/50 backdrop-blur-2xl ring-inset 
+            bg-linear-to-br from-white via-[var(--royal-glow)]/60 to-[var(--primary)]/0 p-[1.5px]
+            "
             >
-              {/* Glass highlights */}
+              {/* ── Decorative layer ── */}
+              <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+                {/* soft white wash so text on the left always stays readable */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white/70 via-white/35 to-transparent" />
+                {/* cotton artwork, bottom right */}
+                <img
+                  src={cottonRight}
+                  alt=""
+                  className="absolute right-0 bottom-0 w-[18rem] opacity-90 select-none sm:w-[24rem] lg:w-[28rem]"
+                />
+                {/* glows */}
+                <div className="absolute -top-24 -left-24 size-72 rounded-full bg-white/70 blur-3xl" />
+                {/* <div className="absolute top-1/3 left-1/3 size-72 rounded-full bg-[var(--royal-glow)]/20 blur-3xl" /> */}
+                <div className="absolute right-1/4 -bottom-20 size-72 rounded-full bg-[var(--primary)]/20 blur-3xl" />
+              </div>
+              {/* top highlight line */}
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-x-10 top-0 h-px bg-linear-to-r from-transparent via-white to-transparent"
               />
-              <div
-                aria-hidden
-                className="pointer-events-none absolute -top-24 -left-24 size-72 rounded-full bg-white/60 blur-3xl"
-              />
-              <div className="relative grid items-center gap-12 lg:grid-cols-3">
-                <Reveal className="lg:col-span-2">
+
+              <div className="relative grid items-stretch gap-10 p-6 sm:p-10 lg:grid-cols-5 lg:gap-14 lg:p-14">
+                {/* ───────────── Left: story ───────────── */}
+                <Reveal className="lg:col-span-3">
                   <span className="mb-6 inline-flex rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] p-[1.5px] shadow-lg shadow-primary/15">
-                    <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
+                    <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-extrabold tracking-[0.24em] text-sky-pop uppercase">
                       Who We Are
                     </span>
                   </span>
-                  <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+
+                  <h2 className="font-display text-3xl leading-[1.1] font-extrabold tracking-tight text-foreground sm:text-4xl lg:text-[3.25rem]">
                     Trust, precision and <span className="text-gradient-royal">discretion</span> in
                     every consignment
                   </h2>
 
                   <div className="mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
 
-                  <p className="relative mt-6 pl-6 text-base leading-relaxed text-foreground/90 sm:text-[17px]">
+                  {/* Lead paragraph */}
+                  <p className="relative mt-8 pl-6 text-lg leading-relaxed font-medium text-foreground sm:text-xl">
                     <span
                       aria-hidden
-                      className="absolute top-1 bottom-1 left-0 w-[3px] rounded-full bg-linear-to-b from-[var(--royal-deep)] via-[var(--primary)] to-gold/70"
+                      className="absolute top-1 bottom-1 left-0 w-[3px] rounded-full bg-linear-to-b from-[var(--royal-deep)] via-[var(--primary)] to-amber-400"
                     />
                     EB Global is a cotton indenting and sourcing company. We connect some of the
-                    world’s leading cotton merchants with spinning mills across Bangladesh. We know
-                    the international cotton trade and the textile industry well, so we can offer
-                    sourcing that’s reliable, transparent, and shaped around what each partner
-                    actually needs, even as those needs change. <br /> <br />
-                    Over the years, we’ve put a lot of effort into building strong international
-                    networks and long-term relationships. We care about doing good work at every
-                    step of the cotton supply chain. Honesty, professionalism, and efficiency guide
-                    how we work, which helps us keep international trade simple and keep suppliers
-                    and buyers in step with each other.
-                    <br />
-                    <br />
+                    world’s leading cotton merchants with spinning mills across Bangladesh.
+                  </p>
+
+                  {/* Supporting copy in two columns */}
+                  <div className="mt-6 grid gap-5 text-[16px] leading-relaxed text-foreground md:grid-cols-2 md:gap-8 sm:text-base">
+                    <p>
+                      We know the international cotton trade and the textile industry well, so we
+                      can offer sourcing that’s reliable, transparent, and shaped around what each
+                      partner actually needs, even as those needs change.
+                    </p>
+                    <p>
+                      Over the years, we’ve put a lot of effort into building strong international
+                      networks and long-term relationships, and we care about doing good work at
+                      every step of the cotton supply chain.
+                    </p>
+                  </div>
+
+                  <p className="mt-5 text-[15px] leading-relaxed text-foreground sm:text-base">
                     We believe good business comes down to trust, consistency, and partnerships that
                     last. For us, being a sourcing partner is only part of the job. We want to be
                     the reliable link between global opportunities and Bangladesh’s growing textile
                     industry.
                   </p>
+
+                  {/* Values */}
+                  <ul className="mt-9 grid gap-3 sm:grid-cols-3">
+                    {VALUES.map(({ icon: Icon, title, text }) => (
+                      <li
+                        key={title}
+                        className="group rounded-2xl border border-white/80 bg-white/60 p-4 shadow-lg shadow-[var(--royal-deep)]/10 backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:bg-white/80 hover:shadow-xl hover:shadow-[var(--royal-deep)]/20 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                      >
+                        <span className="mb-3 inline-flex size-10 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] shadow-md shadow-primary/30 transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
+                          <Icon className="h-5 w-5 text-white" aria-hidden />
+                        </span>
+                        <h3 className="font-display text-base font-bold text-foreground">
+                          {title}
+                        </h3>
+                        <p className="mt-1 text-[13px] leading-relaxed text-foreground/70">
+                          {text}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
                 </Reveal>
 
-                <Reveal delay={0.15} className="lg:col-span-1">
-                  {/* Gradient border */}
-                  <div className="rounded-4xl bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-2xl shadow-[var(--royal-deep)]/30">
-                    {/* Dark glass card */}
-                    <div className="relative overflow-hidden rounded-[calc(2rem-1.5px)] bg-[var(--royal-deep)]/80 p-8 backdrop-blur-2xl">
-                      <div className="aurora-blob -right-16 -top-16 size-56 bg-[var(--royal-glow)]/40" />
+                {/* ───────────── Right: mission ───────────── */}
+                <Reveal delay={0.15} className="lg:col-span-2">
+                  <div className=" rounded-[2rem] bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-2xl shadow-[var(--royal-deep)]/30">
+                    <div className="relative flex min-h-[22rem] flex-col justify-between overflow-hidden rounded-[calc(2rem-1.5px)] bg-[var(--royal-deep)]/85 p-8 backdrop-blur-2xl sm:p-10">
+                      {/* decoration */}
+                      <div className="aurora-blob -top-16 -right-16 size-64 bg-[var(--royal-glow)]/40" />
+                      <div className="pointer-events-none absolute -bottom-24 -left-16 size-56 rounded-full bg-amber-400/15 blur-3xl" />
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute -right-14 -bottom-14 size-56 rounded-full border border-white/10"
+                      />
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute -right-6 -bottom-6 size-40 rounded-full border border-white/10"
+                      />
                       <div
                         aria-hidden
                         className="pointer-events-none absolute inset-x-6 top-0 h-px bg-linear-to-r from-transparent via-white/60 to-transparent"
                       />
+
                       <div className="relative">
-                        <span className="text-[13px] font-extrabold tracking-[0.28em] text-white uppercase">
+                        <span className="inline-flex size-14 items-center justify-center rounded-2xl border border-white/20 bg-white/10 shadow-lg">
+                          <Quote className="h-7 w-7 text-amber-300" aria-hidden />
+                        </span>
+
+                        <span className="mt-7 block text-[12px] font-extrabold tracking-[0.3em] text-white/70 uppercase">
                           Our Mission
                         </span>
-                        <div className="mt-4 h-[3px] w-12 rounded-full bg-linear-to-r from-white to-white/10" />
-                        <p className="font-latic mt-5 text-2xl leading-snug font-medium text-white">
-                          "To be recognized as a premier cotton sourcing partner synonymous with
-                          trust, excellence, and enduring global relationships."
+                        <div className="mt-3 h-[3px] w-12 rounded-full bg-linear-to-r from-amber-300 to-white/10" />
+
+                        <p className="mt-6 font-latic text-2xl leading-snug font-medium text-white sm:text-[1.75rem]">
+                          “To be recognized as a premier cotton sourcing partner synonymous with
+                          trust, excellence, and enduring global relationships.”
                         </p>
+                      </div>
+
+                      <div className="relative mt-10 flex items-center gap-3 border-t border-white/10 pt-5">
+                        <span className="size-2 rounded-full bg-amber-400" />
+                        <span className="text-[11px] font-semibold tracking-[0.24em] text-white/70 uppercase">
+                          EB Global · The Cotton Diplomat
+                        </span>
                       </div>
                     </div>
                   </div>
                 </Reveal>
               </div>
             </div>
-            <div className="relative isolate mx-auto mt-28 max-w-7xl overflow-hidden rounded-[2.5rem] border border-white/70 shadow-2xl shadow-[var(--royal-deep)]/25">
-              {/* Layer 0: cotton plant sits BEHIND the glass */}
-              <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
-                <div className="absolute -bottom-10 -left-10 size-[26rem] rounded-full bg-[var(--royal-glow)]/35 blur-3xl" />
-                <CottonPlant className="absolute -bottom-16 -left-10 w-[22rem] sm:w-[28rem] lg:w-[34rem]" />
-              </div>
 
-              {/* Layer 1: frosted glass that blurs the plant */}
-              <div aria-hidden className="absolute inset-0 z-[1] bg-white/55 backdrop-blur-2xl" />
+            {/* what we do  */}
+            {/* Gradient border wrapper (same as the contact box) */}
+            <div className="relative mx-auto mt-28 max-w-7xl rounded-[2.5rem] bg-linear-to-br from-white via-[var(--royal-glow)] to-[var(--primary)]/0 p-[1.5px] shadow-2xl shadow-[var(--royal-deep)]/25">
+              <div className="relative isolate overflow-hidden rounded-[calc(2.5rem-1.5px)]">
+                {/* Layer 0: cotton plant sits BEHIND the glass */}
+                <div aria-hidden className="pointer-events-none absolute inset-0 z-3">
+                  <div className="absolute -bottom-10 -left-10 size-[26rem] rounded-full bg-[var(--royal-glow)]/35 blur-3xl" />
+                  <CottonPlant className="absolute -bottom-16 -left-10 w-[22rem] sm:w-[28rem] lg:w-[37rem]" />
+                </div>
 
-              {/* Layer 2: content */}
-              <div className="relative z-[2] p-6 sm:p-10 lg:p-14">
-                <Reveal className="text-center">
-                  <div className="relative mb-14">
-                    <span className="inline-flex rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] p-[1.5px] shadow-lg shadow-primary/15">
-                      <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
-                        What We Do
+                {/* Layer 1: frosted glass that blurs the plant */}
+                <div aria-hidden className="absolute inset-0 z-1 bg-white/55 backdrop-blur-2xl" />
+
+                {/* Layer 2: gradient line decorations (above the glass, below the content) */}
+                <div
+                  aria-hidden
+                  className="absolute inset-x-0 top-0 z-[2] h-1.5 bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]"
+                />
+                <svg
+                  aria-hidden
+                  viewBox="0 0 1200 800"
+                  preserveAspectRatio="none"
+                  className="pointer-events-none absolute inset-0 z-[2] h-full w-full"
+                >
+                  <defs>
+                    <linearGradient id="wd-line" x1="0" y1="0" x2="1" y2="0">
+                      <stop
+                        offset="0%"
+                        style={{ stopColor: "var(--royal-deep)" }}
+                        stopOpacity="0"
+                      />
+                      <stop offset="50%" style={{ stopColor: "var(--primary)" }} />
+                      <stop
+                        offset="100%"
+                        style={{ stopColor: "var(--royal-glow)" }}
+                        stopOpacity="0"
+                      />
+                    </linearGradient>
+                  </defs>
+                  {[
+                    { d: "M-50 660 C250 740 520 540 800 640 S1100 760 1260 680", o: 0.5 },
+                    { d: "M-50 710 C250 790 520 590 800 690 S1100 810 1260 730", o: 0.3 },
+                    { d: "M-50 760 C250 840 520 640 800 740 S1100 860 1260 780", o: 0.18 },
+                  ].map((l) => (
+                    <path
+                      key={l.d}
+                      d={l.d}
+                      fill="none"
+                      stroke="url(#wd-line)"
+                      strokeWidth="1.5"
+                      strokeOpacity={l.o}
+                      vectorEffect="non-scaling-stroke"
+                    />
+                  ))}
+                </svg>
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-x-16 top-0 z-[2] h-px bg-gradient-to-r from-transparent via-white to-transparent"
+                />
+
+                {/* Layer 3: content */}
+                <div className="relative z-[3] p-6 sm:p-10 lg:p-14">
+                  <Reveal className="text-center">
+                    <div className="relative mb-14 pt-4 sm:pt-6">
+                      <span className="inline-flex rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)] p-[1.5px] shadow-lg shadow-primary/15">
+                        <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.24em] text-sky-pop">
+                          What We Do
+                        </span>
                       </span>
-                    </span>
-                    <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-                      Tailored solutions for{" "}
-                      <span className="text-gradient-royal">a global industry</span>
-                    </h2>
-                    <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
-                  </div>
-                </Reveal>
+                      <h2 className="mt-6 font-display text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
+                        Tailored solutions for{" "}
+                        <span className="text-gradient-royal">a global industry</span>
+                      </h2>
+                      <div className="mx-auto mt-6 h-1 w-24 rounded-full bg-linear-to-r from-[var(--royal-deep)] via-[var(--primary)] to-[var(--royal-glow)]" />
+                    </div>
+                  </Reveal>
 
-                <div className="mx-auto grid max-w-7xl gap-6 pb-10 sm:grid-cols-2 lg:grid-cols-4">
-                  {SOLUTIONS.map((solution, i) => {
-                    const Icon = SOLUTION_ICONS[i]!;
-                    return (
-                      <Reveal key={solution.title} delay={i * 0.08}>
-                        {/* Gradient border wrapper */}
-                        <div className="group h-full rounded-3xl bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-lg shadow-[var(--royal-deep)]/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--royal-deep)]/40">
-                          {/* Dark glass card */}
-                          <div className="relative h-full overflow-hidden rounded-[calc(1.5rem-1.5px)] bg-[var(--royal-deep)]/80 p-7 backdrop-blur-2xl">
-                            <div className="aurora-blob -right-16 -top-16 size-40 bg-[var(--royal-glow)]/30" />
+                  <div className="mx-auto grid max-w-7xl gap-6 pb-10 sm:grid-cols-2 lg:grid-cols-4 z-1">
+                    {SOLUTIONS.map((solution, i) => {
+                      const Icon = SOLUTION_ICONS[i]!;
+                      return (
+                        <Reveal key={solution.title} delay={i * 0.08}>
+                          {/* Gradient border wrapper */}
+                          <div className="group h-full rounded-3xl bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-lg shadow-[var(--royal-deep)]/20 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-[var(--royal-deep)]/40">
+                            {/* Dark glass card */}
+                            <div className="relative h-full overflow-hidden rounded-[calc(1.5rem-1.5px)] bg-[var(--royal-deep)]/80 p-7 backdrop-blur-2xl">
+                              <div className="aurora-blob -right-16 -top-16 size-40 bg-[var(--royal-glow)]/30" />
 
-                            <div
-                              aria-hidden
-                              className="pointer-events-none absolute inset-x-6 top-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent"
-                            />
+                              <div
+                                aria-hidden
+                                className="pointer-events-none absolute inset-x-6 top-0 h-px bg-linear-to-r from-transparent via-white/40 to-transparent"
+                              />
 
-                            <div className="relative">
-                              <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
-                                <Icon className="h-7 w-7 text-white" />
-                              </span>
+                              <div className="relative">
+                                <span className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-white/20 bg-white/10 shadow-lg transition-transform duration-300 group-hover:scale-110 group-hover:-rotate-3">
+                                  <Icon className="h-7 w-7 text-white" />
+                                </span>
 
-                              <h3 className="font-display text-xl font-semibold tracking-tight text-white">
-                                {solution.title}
-                              </h3>
+                                <h3 className="font-display text-xl font-semibold tracking-tight text-white">
+                                  {solution.title}
+                                </h3>
 
-                              <p className="mt-2 text-[15px] leading-relaxed text-white/70">
-                                {solution.desc}
-                              </p>
+                                <p className="mt-2 text-[15px] leading-relaxed text-white/70">
+                                  {solution.desc}
+                                </p>
 
-                              <div className="mt-6 h-[3px] w-10 rounded-full bg-linear-to-r from-white to-white/10 transition-all duration-500 group-hover:w-full" />
+                                <div className="mt-6 h-[3px] w-10 rounded-full bg-linear-to-r from-white to-white/10 transition-all duration-500 group-hover:w-full" />
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      </Reveal>
-                    );
-                  })}
+                        </Reveal>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             </div>

@@ -161,7 +161,6 @@ function SiteFooter() {
         <div className="rounded-[2rem] bg-linear-to-br from-white/80 via-[var(--royal-glow)] to-[var(--primary)] p-[1.5px] shadow-2xl shadow-[var(--royal-deep)]/40">
           <div className="relative overflow-hidden rounded-[calc(2rem-1.5px)] bg-gradient-to-br from-[var(--primary)] via-[var(--royal-deep)] to-[var(--royal-deep)] px-6 py-10 sm:px-12 sm:py-12">
             <div className="aurora-blob -top-20 -right-20 size-72 bg-[var(--royal-glow)]/40" />
-            <div className="pointer-events-none absolute -bottom-24 left-10 size-64 rounded-full bg-amber-400/15 blur-3xl" />
             <div
               aria-hidden
               className="pointer-events-none absolute inset-x-8 top-0 h-px bg-linear-to-r from-transparent via-white/60 to-transparent"
@@ -173,13 +172,13 @@ function SiteFooter() {
                   <span className="size-1.5 rounded-full bg-amber-400" />
                   Let&apos;s work together
                 </span>
-                <h2 className="mt-5 font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                <h2 className="font-latic mt-5 font-display text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
                   Ready to source the world&apos;s{" "}
                   <span className="bg-gradient-to-r from-amber-200 via-amber-400 to-amber-200 bg-clip-text text-transparent">
                     finest cotton?
                   </span>
                 </h2>
-                <p className="mt-3 text-[15px] leading-relaxed text-white/75">
+                <p className="mt-3 text-[17px] leading-relaxed text-white">
                   Whether you are a global merchant or a leading spinning mill, our team is ready to
                   build a lasting partnership with you.
                 </p>
