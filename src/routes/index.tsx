@@ -74,13 +74,13 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "EB Global — The Cotton Deplomat",
+        title: "EB Global — The Cotton Diplomat",
         description:
           "EB Global connects the world's most reputable cotton merchants with Bangladesh's leading spinning mills. A Trusted Bridge Between Continents.",
       },
       {
         property: "og:title",
-        content: "EB Global — The Cotton Deplomat",
+        content: "EB Global — The Cotton Diplomat",
       },
       {
         property: "og:description",
@@ -220,13 +220,6 @@ function CountUp({
 
   useEffect(() => {
     if (!match || !ref.current) return;
-
-    // // Respect reduced motion: show the final number immediately
-    // if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    //   setN(target);
-    //   return;
-    // }
-
     let raf = 0;
 
     const io = new IntersectionObserver(
@@ -356,10 +349,10 @@ function Index() {
             {/* CTAs */}
             <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
               <a
-                href="#buyers"
+                href="#team"
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-neutral-900 shadow-xl shadow-black/25 ring-4 ring-white/20 transition-all hover:-translate-y-0.5 hover:bg-amber-300 hover:shadow-2xl"
               >
-                Explore Our Buyers
+                Explore Our Team
                 <svg
                   className="h-4 w-4 transition-transform group-hover:translate-x-1"
                   fill="none"

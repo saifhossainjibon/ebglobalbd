@@ -31,9 +31,9 @@ import { cn } from "@/lib/utils";
 import logo from "@/assets/logo.png";
 const NAV_LINKS = [
   { to: "/", label: "Home" },
-  { to: "#about", label: "About Us" },
-  { to: "#buyers", label: "Our Buyers" },
+  { to: "#team", label: "Our Team" },
   { to: "#memberships", label: "Membership" },
+  { to: "#about", label: "About Us" },
   { to: "#contact", label: "Contact Us" },
 ] as const;
 
