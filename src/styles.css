@@ -278,11 +278,11 @@ html {
 
 ::-webkit-scrollbar-thumb {
   border-radius: 99px; /* Fully rounded pill shape */
-  
+
   /* Create padding so the gradient doesn't touch the edges */
-  border: 3px solid transparent; 
+  border: 3px solid transparent;
   background-clip: padding-box;
-  
+
   /* YOUR CUSTOM GRADIENT */
   background-image: linear-gradient(
     to bottom,
@@ -290,7 +290,7 @@ html {
     oklch(0.42 0.14 264) 45%,
     oklch(0.62 0.19 255) 95%
   );
-  
+
   /* Optional: Smooth transition for hover effects */
   transition: background-image 0.2s ease-in-out;
 }
