@@ -1871,7 +1871,8 @@ import { useRef } from "react";
 import marketing from "@/assets/marketing.png";
 import heroCotton from "@/assets/bg.png";
 import cottonRight from "@/assets/cotton-right.png";
-import portContainers from "@/assets/port-containers.jpg";
+// import portContainers from "@/assets/port-containers.jpg";
+import portContainer from "@/assets/port-container.mp4";
 import heroCottonVedio from "@/assets/heroCotton.mp4";
 import { COMPANY, EXCELLENCE, MEMBERSHIPS, SOLUTIONS } from "@/lib/site-data";
 import {
@@ -2615,14 +2616,27 @@ function Logistics() {
         <Reveal>
           {/* Photo on top */}
           <div className="group relative h-64 overflow-hidden rounded-[2.5rem] border border-border shadow-xl shadow-primary/10 sm:h-96">
-            <img
+            {/* <img
               src={portContainers}
               alt="Container ship loading at an international port"
               className="h-full w-full object-cover object-center transition-transform duration-[900ms] ease-out group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
               loading="lazy"
               width={1600}
               height={1008}
-            />
+            /> */}
+            {/* <motion.div aria-hidden style={{ y: bgY }} className="absolute inset-0 scale-110"> */}
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="auto"
+              poster={heroCotton}
+              className="h-full w-full object-cover object-center"
+            >
+              <source src={portContainer} type="video/mp4" />
+            </video>
+            {/* </motion.div> */}
             <div
               aria-hidden
               className="absolute inset-0 bg-gradient-to-t from-[var(--royal-deep)]/60 via-[var(--primary)]/15 to-transparent"
@@ -2630,7 +2644,7 @@ function Logistics() {
           </div>
 
           <GradientFrame
-            className="z-10 -mt-24 sm:-mt-32 sm:mx-10"
+            className="z-10 -mt-20 sm:-mt-22 sm:mx-10"
             innerClassName={GLASS_BOX}
             lines={LINES_ALL}
           >
